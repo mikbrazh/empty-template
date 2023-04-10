@@ -1,7 +1,7 @@
 const {src, dest, watch, parallel, series} = require('gulp');
 
-const htmlmin      = require('gulp-htmlmin'),
-      fileinclude  = require('gulp-file-include'),
+const fileinclude  = require('gulp-file-include'),
+      htmlmin      = require('gulp-htmlmin'),
       sass         = require('gulp-sass')(require('sass')),
       autoprefixer = require('gulp-autoprefixer'),
       concat       = require('gulp-concat'),
@@ -34,23 +34,24 @@ const config = {
       // favicons link
       // script link
 
+// РАБОТА С КОДОМ
 
-function include() {
-  return src([''+config.src+'/index.html'])
+// Подключение html в html
+function includehtml() {
+  return src(''+config.src+'/index.html')
     .pipe(fileinclude({
       prefix: '@@',
       basepath: ''+config.src+'/html/'
     }))
-    .pipe(dest(config.dist));
+    .pipe(rename('_index.html')) // Буферный файл для последующей обработки в buildhtml
+    .pipe(dest(''+config.src+'/html/_buffer'))
 }
-
-
-// РАБОТА С КОДОМ
 
 // Обработка html
 function buildhtml() {
-  return src(''+config.src+'/*.html')
+  return src(''+config.src+'/html/_buffer/_index.html')
     // .pipe(htmlmin({collapseWhitespace: true})) // Минификация html
+    .pipe(rename('index.html'))
     .pipe(dest(config.dist))
     .pipe(browsersync.stream());
 }
@@ -194,12 +195,12 @@ function killpages() {
 // ОТСЛЕЖИВАНИЕ ИЗМЕНЕНИЙ
 
 function watching() {
-  watch([''+config.src+'/css/**/*.css'], buildcss);
-  watch([''+config.src+'/'+config.syntax+'/style.'+config.syntax+''], buildstyles);
-  watch([''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+''], buildvendorstyles);
-  watch([''+config.src+'/js/**/*.js'], buildjs);
-  watch([''+config.src+'/vendor/**/*.*'], buildvendorjs);
-  watch([''+config.src+'/**/*.html'], buildhtml);
+  watch(''+config.src+'/css/**/*.css', buildcss);
+  watch(''+config.src+'/'+config.syntax+'/style.'+config.syntax+'', buildstyles);
+  watch(''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+'', buildvendorstyles);
+  watch(''+config.src+'/js/**/*.js', buildjs);
+  watch(''+config.src+'/vendor/**/*.*', buildvendorjs);
+  watch([''+config.src+'/index.html', ''+config.src+'/html/*.html'], series(includehtml, buildhtml));
 }
 
 // СИНХРОНИЗАЦИЯ В БРАУЗЕРЕ
@@ -211,12 +212,13 @@ function sync() {
   });
 }
 
+exports.includehtml = includehtml;
+exports.buildhtml = buildhtml;
 exports.buildcss = buildcss;
 exports.buildstyles = buildstyles;
 exports.buildvendorstyles = buildvendorstyles;
 exports.buildjs = buildjs;
 exports.buildvendorjs = buildvendorjs;
-exports.buildhtml = buildhtml;
 exports.buildimg1x = buildimg1x;
 exports.buildimg2x = buildimg2x;
 exports.killimg1x = killimg1x;
@@ -230,9 +232,7 @@ exports.killfonts = killfonts;
 exports.buildpages = buildpages;
 exports.killpages = killpages;
 
-exports.include = include;
-
 exports.buildimg = parallel(buildimg1x, buildimg2x, buildsvg);
 exports.killimg = parallel(killimg1x, killimg2x, killsvg);
 
-exports.default = parallel(buildhtml, buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
+exports.default = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
