@@ -71,7 +71,7 @@ function buildstyles() {
   return src(''+config.src+'/'+config.syntax+'/style.'+config.syntax+'')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({overrideBrowserslist: ['> 0.2%, last 10 versions, Firefox ESR']}))
-    .pipe(csso()) // Минификация css
+    // .pipe(csso()) // Минификация css
     .pipe(rename({suffix: '.min', prefix: ''}))
     .pipe(dest(''+config.dist+'/css/'))
     .pipe(browsersync.stream());
@@ -99,7 +99,7 @@ function buildjs() {
 // Обработка вендорных js
 function buildvendorjs() {
   return src([
-    ''+config.src+'/vendor/swiper/src/swiper.js', // Сюда добавляем js библиотеки
+    ''+config.src+'/vendor/vendor.js', // Сюда добавляем js библиотеки
     ])
     .pipe(concat('vendor.min.js'))
     .pipe(uglify()) // Минификация js

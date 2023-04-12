@@ -1,13 +1,31 @@
-// #8C9BB5
+// logo  #8C9BB5
+// bg    #4F8E00
+// текст #0F0F0F
 
-// green #4F8E00
-  
+@import "fonts"
+
+// Центрирование tmp
+body
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100vh
+
+// Сброс стилей
+h1, h2, h3, h4, h5, h6
+  padding: 0
+  margin: 0
+
 .partners
-  height: 300px
+  padding: 80px 40px 120px
   background-color: #4F8E00
   
 .partners__title
-  color: white
+  margin-bottom: 30px
+  font-family: "Manrope-600", Arial, sans-serif
+  font-size: 40px
+  font-weight: 600
+  color: #FFFFFF
 
 .partners-block
   display: grid
@@ -18,9 +36,23 @@
   display: flex
   align-items: center
   justify-content: center
-  width: 200px
-  height: auto
 
 .partners__item img
-  width: 100%
-  height: auto
+  width: 80%
+  opacity: 0.5
+
+@media (max-width: 63.99875em)
+  .partners
+    padding: 60px 40px 90px
+
+  .partners-block
+    grid-template-columns: repeat(1, 1fr)
+    gap: 50px
+
+  .partners__title
+    margin-bottom: 50px
+    font-size: 24px
+
+  .partners__item img
+    width: 70%
+    opacity: 0.5
