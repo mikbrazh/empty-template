@@ -13,6 +13,7 @@ const fileinclude  = require('gulp-file-include'),
       imageresize  = require('gulp-image-resize'),
       imagemin     = require('gulp-imagemin'),
       svgmin       = require('gulp-svgmin'),
+      ttf2woff2    = require('gulp-ttf2woff2'),
       browsersync  = require('browser-sync').create();
 
 const config = {
@@ -172,6 +173,13 @@ function buildfonts() {
     .pipe(dest(''+config.dist+'/fonts/'));
 }
 
+// Конвертация в woff2
+function buildwoff2() {
+  return src(''+config.src+'/fonts/**/*.ttf')
+  .pipe(ttf2woff2())
+  .pipe(dest(''+config.dist+'/fonts/'));
+}
+
 // Удаление fonts
 function killfonts() {
   return src(''+config.dist+'/fonts/', {allowEmpty: true})
@@ -212,27 +220,28 @@ function sync() {
   });
 }
 
-exports.includehtml = includehtml;
-exports.buildhtml = buildhtml;
-exports.buildcss = buildcss;
-exports.buildstyles = buildstyles;
+exports.includehtml       = includehtml;
+exports.buildhtml         = buildhtml;
+exports.buildcss          = buildcss;
+exports.buildstyles       = buildstyles;
 exports.buildvendorstyles = buildvendorstyles;
-exports.buildjs = buildjs;
-exports.buildvendorjs = buildvendorjs;
-exports.buildimg1x = buildimg1x;
-exports.buildimg2x = buildimg2x;
-exports.killimg1x = killimg1x;
-exports.killimg2x = killimg2x;
-exports.buildsvg = buildsvg;
-exports.killsvg = killsvg;
-exports.buildfav = buildfav;
-exports.killfav = killfav;
-exports.buildfonts = buildfonts;
-exports.killfonts = killfonts;
-exports.buildpages = buildpages;
-exports.killpages = killpages;
+exports.buildjs           = buildjs;
+exports.buildvendorjs     = buildvendorjs;
+exports.buildimg1x        = buildimg1x;
+exports.buildimg2x        = buildimg2x;
+exports.killimg1x         = killimg1x;
+exports.killimg2x         = killimg2x;
+exports.buildsvg          = buildsvg;
+exports.killsvg           = killsvg;
+exports.buildfav          = buildfav;
+exports.killfav           = killfav;
+exports.buildfonts        = buildfonts;
+exports.buildwoff2        = buildwoff2;
+exports.killfonts         = killfonts;
+exports.buildpages        = buildpages;
+exports.killpages         = killpages;
 
 exports.buildimg = parallel(buildimg1x, buildimg2x, buildsvg);
-exports.killimg = parallel(killimg1x, killimg2x, killsvg);
+exports.killimg  = parallel(killimg1x, killimg2x, killsvg);
 
-exports.default = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
+exports.default  = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
