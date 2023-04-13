@@ -31,9 +31,16 @@ const config = {
       // convert fonts
       // svg sprites
       // css +
-      // default styles
+      // default styles в style.sass
       // favicons link
       // script link
+
+// Доработать:
+      // Шрифты – чтобы не только woff2 подключался
+      // Фавйкон - имя файла, размеры, кусок кода
+      // Добавить возможность, включения комментариев в конечный css
+
+
 
 // РАБОТА С КОДОМ
 
