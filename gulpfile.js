@@ -28,15 +28,15 @@ const config = {
       // sourcemap
       // png sprite
       // include html +
-      // convert fonts
+      // convert fonts +
       // svg sprites
       // css +
       // default styles в style.sass
-      // favicons link
-      // script link
+      // favicons link +
+      // script link +
 
 // Доработать:
-      // Шрифты – чтобы не только woff2 подключался
+      // Шрифты – чтобы не только woff2 подключался +
       // Фавйкон - имя файла, размеры, кусок кода
       // Добавить возможность, включения комментариев в конечный css
 
@@ -96,8 +96,8 @@ function buildvendorstyles() {
 
 // Обработка js
 function buildjs() {
-  return src(''+config.src+'/js/script.js')
-    .pipe(concat('script.min.js'))
+  return src(''+config.src+'/js/main.js')
+    .pipe(concat('main.min.js'))
     .pipe(uglify()) // Минификация js
     .pipe(dest(''+config.dist+'/js'))
     .pipe(browsersync.stream());
@@ -160,22 +160,30 @@ function killsvg() {
     .pipe(clean());
 }
 
-// Обработка favicons
-function buildfav() {
-  return src([''+config.src+'/fav/*.*', '!'+config.src+'/fav/Thumbs.db', '!'+config.src+'/fav/*.DS_Store'])
+// РАБОТА С ФАВИКОНКАМИ
+
+// Обработка фавиконок img
+function buildfavimg() {
+  return src([''+config.src+'/fav/*.*', '!'+config.src+'/fav/favicon.ico', '!'+config.src+'/fav/Thumbs.db', '!'+config.src+'/fav/*.DS_Store'])
+    .pipe(dest(''+config.dist+'/img/fav/'));
+}
+
+// Обработка фавиконок ico
+function buildfavico() {
+  return src([''+config.src+'/fav/favicon.ico', ''+config.src+'/manifest.json', ''+config.src+'/browserconfig.xml'])
     .pipe(dest(config.dist));
 }
 
-// Удаление favicons
+// Удаление фавиконок
 function killfav() {
-  return src([''+config.dist+'/*.jpg', ''+config.dist+'/*.jpeg', ''+config.dist+'/*.png', ''+config.dist+'/*.svg', ''+config.dist+'/*.ico', ''+config.dist+'/browserconfig.xml', ''+config.dist+'/site.webmanifest'], {allowEmpty: true})
+  return src([''+config.dist+'/img/fav/', ''+config.dist+'/*.ico', ''+config.dist+'/manifest.json', ''+config.dist+'/browserconfig.xml'], {allowEmpty: true})
     .pipe(clean());
 }
 
 // РАБОТА СО ШРИФТАМИ
 
-// Обработка fonts
-function buildfonts() {
+// Обработка ttf и других
+function buildttf() {
   return src(''+config.src+'/fonts/**/*')
     .pipe(dest(''+config.dist+'/fonts/'));
 }
@@ -211,7 +219,8 @@ function killpages() {
 
 function watching() {
   watch(''+config.src+'/css/**/*.css', buildcss);
-  watch(''+config.src+'/'+config.syntax+'/style.'+config.syntax+'', buildstyles);
+  watch([''+config.src+'/'+config.syntax+'/style.'+config.syntax+'',
+         ''+config.src+'/'+config.syntax+'/_sections/*.'+config.syntax+''], buildstyles);
   watch(''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+'', buildvendorstyles);
   watch(''+config.src+'/js/**/*.js', buildjs);
   watch(''+config.src+'/vendor/**/*.*', buildvendorjs);
@@ -240,15 +249,18 @@ exports.killimg1x         = killimg1x;
 exports.killimg2x         = killimg2x;
 exports.buildsvg          = buildsvg;
 exports.killsvg           = killsvg;
-exports.buildfav          = buildfav;
+exports.buildfavico       = buildfavico;
+exports.buildfavimg       = buildfavimg;
 exports.killfav           = killfav;
-exports.buildfonts        = buildfonts;
+exports.buildttf          = buildttf;
 exports.buildwoff2        = buildwoff2;
 exports.killfonts         = killfonts;
 exports.buildpages        = buildpages;
 exports.killpages         = killpages;
 
-exports.buildimg = parallel(buildimg1x, buildimg2x, buildsvg);
-exports.killimg  = parallel(killimg1x, killimg2x, killsvg);
+exports.buildimg          = parallel(buildimg1x, buildimg2x, buildsvg);
+exports.killimg           = parallel(killimg1x, killimg2x, killsvg);
+exports.buildfav          = parallel(buildfavico, buildfavimg);
+exports.buildfonts        = parallel(buildttf, buildwoff2);
 
-exports.default  = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
+exports.default           = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
