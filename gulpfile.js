@@ -36,6 +36,7 @@ const config = {
       // favicons link +
       // script link +
       // настроить автозаполнение путей
+      // favicons
 
 // Доработать:
       // Шрифты – чтобы не только woff2 подключался +
@@ -184,13 +185,13 @@ function buildfavimg() {
 
 // Обработка фавиконок ico
 function buildfavico() {
-  return src([''+config.src+'/fav/favicon.ico', ''+config.src+'/manifest.json', ''+config.src+'/browserconfig.xml'])
+  return src([''+config.src+'/fav/favicon.ico', ''+config.src+'/manifest/manifest.json', ''+config.src+'/manifest/browserconfig.xml', ''+config.src+'/manifest/ht.access'])
     .pipe(dest(config.dist));
 }
 
 // Удаление фавиконок
 function killfav() {
-  return src([''+config.dist+'/img/fav/', ''+config.dist+'/*.ico', ''+config.dist+'/manifest.json', ''+config.dist+'/browserconfig.xml'], {allowEmpty: true})
+  return src([''+config.dist+'/img/fav/', ''+config.dist+'/*.ico', ''+config.dist+'/manifest.json', ''+config.dist+'/browserconfig.xml', ''+config.dist+'/ht.access'], {allowEmpty: true})
     .pipe(clean());
 }
 
@@ -226,6 +227,13 @@ function buildpages() {
 // Удаление каталога GitHub Pages
 function killpages() {
   return src(''+config.pages+'/'+config.sitename+'', {allowEmpty: true})
+    .pipe(clean({force: true}));
+}
+
+// УДАЛЕНИЕ DIST
+
+function killdist() {
+  return src(config.dist, {allowEmpty: true})
     .pipe(clean({force: true}));
 }
 
@@ -271,10 +279,13 @@ exports.buildwoff2        = buildwoff2;
 exports.killfonts         = killfonts;
 exports.buildpages        = buildpages;
 exports.killpages         = killpages;
+exports.killdist          = killdist;
 
 exports.buildimg          = parallel(buildimg1x, buildimg2x, buildsvg);
 exports.killimg           = parallel(killimg1x, killimg2x, killsvg);
 exports.buildfav          = parallel(buildfavico, buildfavimg);
 exports.buildfonts        = parallel(buildttf, buildwoff2);
+
+exports.build             = series(killdist, parallel(series(includehtml, buildhtml), buildimg1x, buildimg2x, buildsvg, buildfavico, buildfavimg, buildttf, buildwoff2, buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs));
 
 exports.default           = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
