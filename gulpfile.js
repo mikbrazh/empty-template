@@ -3,6 +3,7 @@ const {src, dest, watch, parallel, series} = require('gulp');
 const fileinclude  = require('gulp-file-include'),
       htmlmin      = require('gulp-htmlmin'),
       sass         = require('gulp-sass')(require('sass')),
+      sourcemaps   = require('gulp-sourcemaps'),
       autoprefixer = require('gulp-autoprefixer'),
       concat       = require('gulp-concat'),
       csso         = require('gulp-csso'),
@@ -25,15 +26,16 @@ const config = {
       }
 
 // Сделать:
-      // sourcemap
+      // sourcemap +
       // png sprite
       // include html +
       // convert fonts +
       // svg sprites
       // css +
-      // default styles в style.sass
+      // default styles в style.sass +
       // favicons link +
       // script link +
+      // настроить автозаполнение путей
 
 // Доработать:
       // Шрифты – чтобы не только woff2 подключался +
@@ -42,7 +44,7 @@ const config = {
 
 
 
-// РАБОТА С КОДОМ
+// РАБОТА С HTML
 
 // Подключение html в html
 function includehtml() {
@@ -64,11 +66,13 @@ function buildhtml() {
     .pipe(browsersync.stream());
 }
 
+// РАБОТА С CSS
+
 // Обработка css
 function buildcss() {
   return src(''+config.src+'/css/*.css')
     .pipe(rename({suffix: '.min', prefix: ''}))
-    .pipe(csso()) // Минификация css
+    // .pipe(csso()) // Минификация css
     .pipe(dest(''+config.dist+'/css/'))
     .pipe(browsersync.stream())
 }
@@ -76,8 +80,10 @@ function buildcss() {
 // Обработка sass/scss
 function buildstyles() {
   return src(''+config.src+'/'+config.syntax+'/style.'+config.syntax+'')
+    .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({overrideBrowserslist: ['> 0.2%, last 10 versions, Firefox ESR']}))
+    .pipe(sourcemaps.write())
     // .pipe(csso()) // Минификация css
     .pipe(rename({suffix: '.min', prefix: ''}))
     .pipe(dest(''+config.dist+'/css/'))
@@ -87,18 +93,24 @@ function buildstyles() {
 // Обработка вендорных sass/scss
 function buildvendorstyles() {
   return src(''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+'')
+    .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
     .pipe(sass().on('error', sass.logError))
+    .pipe(sourcemaps.write())
     .pipe(concat('vendor.min.css'))
-    .pipe(csso()) // Минификация css
+    // .pipe(csso()) // Минификация css
     .pipe(dest(''+config.dist+'/css/'))
     .pipe(browsersync.stream());
 }
 
+// РАБОТА С JS
+
 // Обработка js
 function buildjs() {
   return src(''+config.src+'/js/main.js')
+    .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
     .pipe(concat('main.min.js'))
-    .pipe(uglify()) // Минификация js
+    .pipe(sourcemaps.write())
+    // .pipe(uglify()) // Минификация js
     .pipe(dest(''+config.dist+'/js'))
     .pipe(browsersync.stream());
 }
@@ -108,8 +120,10 @@ function buildvendorjs() {
   return src([
     ''+config.src+'/vendor/vendor.js', // Сюда добавляем js библиотеки
     ])
+    .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
     .pipe(concat('vendor.min.js'))
-    .pipe(uglify()) // Минификация js
+    .pipe(sourcemaps.write())
+    // .pipe(uglify()) // Минификация js
     .pipe(dest(''+config.dist+'/js'))
     .pipe(browsersync.stream());
 }

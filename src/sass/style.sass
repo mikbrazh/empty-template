@@ -18,6 +18,11 @@ p
   padding: 0
   margin: 0
 
+ul
+  padding: 0
+  margin: 0
+  list-style: none
+
 a
   text-decoration: none
 
@@ -27,17 +32,34 @@ button
   border: none
   background: transparent
 
+input, textarea
+  padding: 0
+  margin: 0
+  border: none
+  outline: none
+  background: transparent
+
 // Дефолтный SASS
-// body // Центрирование для верстки компонентов
-//   display: flex
-//   align-items: center
-//   justify-content: center
-//   height: 100vh
-//   background-color: lighten($temp, 20%)
 
 body
-  overflow-x: hidden
+  // Центрирование для верстки компонентов
+  // display: flex
+  // align-items: center
+  // justify-content: center
+  // height: 100vh
+
+  font-family: $Mulish400
+  font-size: 16px
+  line-height: 1.25
+  letter-spacing: 1.25px
+  color: $vulcan
   background-color: $milk
+  h1
+    margin-bottom: 30px
+  a
+    color: $vulcan
+  p
+    margin-bottom: 10px
 
 ::placeholder
   color: $milk
@@ -46,69 +68,15 @@ body
   color: $accent
   background-color: $vulcan
 
+.img-responsive
+  display: block
+  max-width: 100%
+  height: auto
+  &--width-100 // ЗАЧЕМ???
+    width: 100%
+
 .visually-hidden
   display: none
-
-// body
-//   position: relative
-  // overflow-x: hidden
-  // min-width: 320px
-//   font-family: $font-general
-  // font-size: 16px
-//   line-height: 1.25
-//   letter-spacing: 1.25px
-//   color: $color-text
-//   background-color: #fff
-//   input, textarea
-//     margin: 0
-//     padding: 0
-//     outline: none
-
-// b, strong
-//   font-weight: bold
-
-// ul
-//   margin: 0
-//   padding: 0
-//   list-style: none
-
-
-// body {
-// 	font-size: 16px;
-// 	min-width: 320px;
-// 	position: relative;
-// 	line-height: 1.65;
-// 	font-family: $default-font;
-// 	overflow-x: hidden;
-// 	color: $text;
-// 	input, textarea {
-// 		border: #666 1px solid;
-// 		outline: none;
-// 		&:focus:required:invalid {
-// 			border-color: red;
-// 		}
-// 		&:required:valid {
-// 			border-color: green;
-// 		}
-// 	}
-// }
-
-// .img-responsive {
-// 	display: block;
-// 	max-width: 100%;
-// 	height: auto;
-// 	&.img-width {
-// 		width: 100%;
-// 	}
-// }
-
-// .text-center {
-// 	text-align: center;
-// }
-
-// b, strong {
-// 	font-weight: bold;
-// }
 
 // Кастомный SASS
 @import "_sections/_main"
