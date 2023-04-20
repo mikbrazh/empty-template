@@ -25,25 +25,12 @@ const config = {
         sitename:         'sitename'
       }
 
-// Сделать:
-      // sourcemap +
-      // png sprite
-      // include html +
-      // convert fonts +
-      // svg sprites
-      // css +
-      // default styles в style.sass +
-      // favicons link +
-      // script link +
-      // настроить автозаполнение путей
-      // favicons
-
-// Доработать:
-      // Шрифты – чтобы не только woff2 подключался +
-      // Фавйкон - имя файла, размеры, кусок кода
-      // Добавить возможность, включения комментариев в конечный css
-
-
+// На будущее:
+//   gulp png sprites
+//   gulp svg sprites
+//   gulp favicons
+//   настроить автозаполнение путей
+//   подумать нужен ли bower
 
 // РАБОТА С HTML
 
@@ -241,8 +228,9 @@ function killdist() {
 
 function watching() {
   watch(''+config.src+'/css/**/*.css', buildcss);
-  watch([''+config.src+'/'+config.syntax+'/style.'+config.syntax+'',
-         ''+config.src+'/'+config.syntax+'/_sections/*.'+config.syntax+''], buildstyles);
+  watch(''+config.src+'/'+config.syntax+'/**/*.'+config.syntax+'', buildstyles);
+  // watch([''+config.src+'/'+config.syntax+'/style.'+config.syntax+'',
+  //        ''+config.src+'/'+config.syntax+'/_sections/*.'+config.syntax+''], buildstyles);
   watch(''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+'', buildvendorstyles);
   watch(''+config.src+'/js/**/*.js', buildjs);
   watch(''+config.src+'/vendor/**/*.*', buildvendorjs);
