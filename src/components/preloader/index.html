@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Preloader</title>
+	<style>
+		/*CSS с https://cssloaders.github.io/*/
+		/*Preloader START*/
+		#preloader {
+			z-index: 999;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #FFFFFF;
+			opacity: 1;
+			visibility: visible;
+			transition: 1s all ease;
+		}
+
+		#preloader.preloader--hidden {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		.loader {
+			width: 48px;
+			height: 48px;
+			display: block;
+			margin:15px auto;
+			position: relative;
+			color: #FFF;
+			box-sizing: border-box;
+			animation: rotation 1s linear infinite;
+		}
+
+		.loader::after,
+		.loader::before {
+			content: '';	
+			box-sizing: border-box;
+			position: absolute;
+			width: 24px;
+			height: 24px;
+			top: 50%;
+			left: 50%;
+			transform: scale(0.5) translate(0, 0);
+			background-color: #121212;
+			border-radius: 50%;
+			animation: animloader 1s infinite ease-in-out;
+		}
+
+		.loader::before {
+			background-color: #4F8E00;
+			transform: scale(0.5) translate(-48px, -48px);
+		}
+
+		@keyframes rotation {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		} 
+		@keyframes animloader {
+				50% {
+					transform: scale(1) translate(-50%, -50%);
+				}
+		}
+		/*Preloader END*/
+	</style>
+</head>
+<body>
+	<!-- Preloader START -->
+	<div id="preloader">
+		<span class="loader"></span>
+	</div>
+	<!-- Preloader END -->
+
+	<h1 class="title" style="text-align: center">Содержимое сайта тут</h1>
+
+	<script src="preloader.js"></script>
+</body>
+</html>
