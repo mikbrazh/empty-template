@@ -1,11 +1,22 @@
-$default-font: "roboto-example", sans-serif;
-$accent: orange;
-$text: #333;
+// Шрифт браузера по умолчанию (для emizer)
+$default-browser-font-size: 16px;
 
-// Customization Bootstrap vars from "app/libs/bootstrap/scss/_variables.scss"
-$grid-gutter-width: 30px;
-$grid-columns: 12;
-$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
-$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px);
+// Цвета
+$accent:                    #FF1616;
+$vulcan:                    #051326;
+$milk:                      #F7F7F8;
+$grey:                      #CACAD0;
+$lightGrey:                 #EEEFF0;
+$darkGrey:                  #8A8A99;
 
-$gutter: $grid-gutter-width;
+$temp:                      #C0C0C0; // Служебный фон
+
+// Шрифты
+$Roboto400:                "Roboto-400", Arial, sans-serif;
+$Roboto700:                "Roboto-700", Arial, sans-serif;
+$Raleway400:               "Raleway-400", Arial, sans-serif;
+$Raleway700:               "Raleway-700", Arial, sans-serif;
+
+// Переходы анимации
+$buttons:                   0.1s ease;
+$navButtons:                0.2s ease;

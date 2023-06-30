@@ -1,4 +1,17 @@
-@import "_mixins/font-face";
+@import "_mixins/font-face"; // !!! Проверить подключение всех форматов в _mixins/font-face.sass
 
-@include font-face("roboto-example", "../fonts/RobotoRegular/RobotoRegular");
-@include font-face("roboto-example", "../fonts/RobotoBold/RobotoBold", bold);
+@include font-face("Roboto-400",  "../fonts/Roboto/Roboto-Regular",          400);
+@include font-face("Roboto-700",  "../fonts/Roboto/Roboto-Bold",             700);
+@include font-face("Raleway-400", "../fonts/Raleway/static/Raleway-Regular", 400);
+@include font-face("Raleway-700", "../fonts/Raleway/static/Raleway-Bold",    700);
+
+// Подсказка:
+// 100 Тонкий (Волосяной) Thin (Hairline)
+// 200 Дополнительный светлый (Сверхсветлый) Extra Light (Ultra Light)
+// 300 Светлый Light
+// 400 Нормальный Normal (Regular)
+// 500 Средний Medium
+// 600 Полужирный Semi Bold (Demi Bold)
+// 700 Жирный Bold
+// 800 Дополнительный жирный (Сверхжирный) Extra Bold (Ultra Bold)
+// 900 Чёрный (Густой) Black (Heavy)

@@ -18,7 +18,7 @@ const fileinclude  = require('gulp-file-include'),
       browsersync  = require('browser-sync').create();
 
 const config = {
-        syntax:           'sass',
+        syntax:           'scss',
         src:              'src',
         dist:             'dist',
         pages:            'C:/Users/admin/Desktop/Github/mikbrazh.github.io',
