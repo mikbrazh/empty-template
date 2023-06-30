@@ -1,0 +1,109 @@
+// Вендорные миксины
+// Миксины Бутстрапа для _media.sass (порядок именно такой)
+@import "../vendor/bootstrap-5.2.3/scss/functions";
+@import "../vendor/bootstrap-5.2.3/scss/variables";
+@import "../vendor/bootstrap-5.2.3/scss/mixins";
+@import "_mixins/emizer"; // Перевод px в em
+
+// Кастомный импорт
+@import "fonts";
+@import "vars";
+
+// Сброс стилей
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+}
+
+input,
+textarea {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+// Дефолтный SASS
+
+body {
+  // Центрирование для верстки компонентов
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // height: 100vh;
+
+  font-family: $Roboto400;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: 1.25px;
+  color: $vulcan;
+  background-color: $milk;
+
+  h1 {
+    font-family: $Raleway700;
+    margin-bottom: 50px;
+  }
+
+  p {
+    margin-bottom: 30px;
+  }
+
+  a {
+    color: $vulcan;
+  }
+}
+
+::placeholder {
+  color: $milk;
+}
+
+::selection {
+  color: $accent;
+  background-color: $vulcan;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+
+  &--width-100 {
+    width: 100%;
+  }
+}
+
+.visually-hidden {
+  display: none
+}
+
+// Кастомный SASS
+@import "_sections/_main";
+@import "media"; // Всегда в конце

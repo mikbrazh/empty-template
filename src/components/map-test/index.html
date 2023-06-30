@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map test</title>
+
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=01a6980e-0535-43e1-adf7-04e13bebcb74&lang=en_US" type="text/javascript">
+  </script>
+
+  <script type="text/javascript">
+    ymaps.ready(init);
+    function init() { 
+
+        var myMap = new ymaps.Map("map", {
+            center: [55.661333, 37.509352],
+            zoom: 16
+        });
+
+        var myGeoObject  = new ymaps.GeoObject({
+          geometry: {
+              type: "Point",
+              coordinates: [55.661333, 37.509352]
+          },
+
+          properties: {
+            iconCaption: 'Lisa Dent – Стоматология',
+            balloonContentHeader: 'Lisa Dent',
+            balloonContentBody: 'Стоматология<br><em>Помогаем Вам обрести красивую улыбку</em>',
+            balloonContentFooter: 'Режим работы:<br>СБ-ВС: 9:00 - 20:00'
+          },
+        },
+
+        { preset: 'islands#redDotIcon' });
+
+        myMap.geoObjects.add(myGeoObject);
+     }
+  </script>
+</head>
+
+<body>
+
+  <div id="map" style="width: 600px; height: 400px"></div>
+
+</body>
+</html>
+

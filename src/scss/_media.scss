@@ -1,31 +1,37 @@
-@import "vars";
+// Медиа Бутстрапа
 
+// DESKTOP FIRST
+// ≥1400px
+@include media-breakpoint-down(xxl) {
 
-/*==========  Desktop First  ==========*/
+}
 
 // ≥1200px
-@include media-breakpoint-down(lg) {
-	
+@include media-breakpoint-down(xl) {
+
 }
 
 // ≥992px
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
 
 }
 
 // ≥768px
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
 
 }
 
 // ≥576px
+@include media-breakpoint-down(sm) {
+
+}
+
+// >0px
 @include media-breakpoint-down(xs) {
 
 }
 
-
-/*==========  Mobile First  ==========*/
-
+// MOBILE FIRST
 // ≤576px
 @include media-breakpoint-up(sm) {
 
@@ -43,5 +49,10 @@
 
 // ≤1200px
 @include media-breakpoint-up(xl) {
-	
+
+}
+
+// ≤1400px
+@include media-breakpoint-up(xxl) {
+  
 }

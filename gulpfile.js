@@ -18,7 +18,7 @@ const fileinclude  = require('gulp-file-include'),
       browsersync  = require('browser-sync').create();
 
 const config = {
-        syntax:           'sass',
+        syntax:           'scss',
         src:              'src',
         dist:             'dist',
         pages:            'C:/Users/admin/Desktop/Github/mikbrazh.github.io',
@@ -291,8 +291,12 @@ exports.buildfonts        = parallel(buildttf, buildwoff2);
 
 // exports.build             = series(killdist, parallel(series(includehtml, buildhtml), buildimg1x, buildimg2x, buildsvg, buildfavico, buildfavimg, buildttf, buildwoff2, buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs));
 
+<<<<<<< HEAD
 exports.build             = series(killdist, parallel(series(includehtml, buildhtml), buildimg1x, buildimg2x, buildsvg, buildfavico, buildfavimg, buildttf, buildwoff2, buildstyles, buildvendorstyles, buildjs, buildvendorjs));
 
 // exports.default           = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
 
 exports.default           = parallel(series(includehtml, buildhtml), buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
+=======
+exports.default           = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
+>>>>>>> 34b87b69ae5be857a056f0efdb4cf4ba2c307790
