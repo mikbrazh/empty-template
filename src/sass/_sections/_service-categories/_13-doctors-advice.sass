@@ -1,0 +1,117 @@
+// doctors-advice START
+.doctors-advice
+  padding-top: 75px
+  padding-bottom: 75px
+
+.doctors-advice__title
+  margin-bottom: 70px
+
+.doctors-advice__article-block
+  position: relative
+
+.doctors-advice-swiper
+  overflow: hidden
+
+.doctors-advice__article-block
+  margin-bottom: 70px
+
+.doctors-advice__image-block
+  margin-bottom: 32px
+
+.doctors-advice__article-time
+  display: block
+  margin-bottom: 12px
+  font-family: $Roboto400
+  font-size: 15px
+  line-height: 1.53
+  color: $grey
+
+.doctors-advice__article-title
+  margin-bottom: 12px
+  font-family: $Jost500
+  font-size: 24px
+  line-height: 1.16
+  color: $darkGrey
+
+.doctors-advice__article-text
+  margin-bottom: 18px
+  font-family: $Roboto400
+  font-size: 16px
+  line-height: 26px
+  color: $grey
+
+.doctors-advice__article-link
+  display: block
+  font-family: $Jost500
+  font-size: 16px
+  line-height: 1.625
+  color: $grey
+  transition: $navLinks
+  &:hover
+    color: $accent
+
+.doctors-advice-swiper__button-prev
+  position: absolute
+  bottom: -128px
+  right: 88px
+  
+
+.doctors-advice-swiper__button-next
+  position: absolute
+  bottom: -128px
+  right: 0
+
+.doctors-advice__more-articles-button
+  max-width: 139px
+
+// Media
+// ≥992px
++media-breakpoint-down(lg)
+  .doctors-advice
+    padding-top: 0
+    padding-bottom: 0
+
+  .doctors-advice__article-block
+    margin-bottom: 20px
+
+  .doctors-advice__title
+    margin-bottom: 20px
+    font-family: $Jost400
+    font-size: 32px
+    line-height: 1.18
+
+  .doctors-advice__image-block
+    margin-bottom: 12px
+
+  .doctors-advice__article-time
+    margin-bottom: 8px
+    font-family: $Roboto400
+    font-size: 12px
+    line-height: 1.5
+
+  .doctors-advice__article-title
+    margin-bottom: 8px
+    font-family: $Jost600
+    font-size: 15px
+    line-height: 1.33
+
+  .doctors-advice__article-text
+    margin-bottom: 8px
+    font-family: $Roboto400
+    font-size: 12px
+    line-height: 1.5
+
+  .doctors-advice__article-link
+    display: block
+    font-family: $Jost500
+    font-size: 14px
+    line-height: 1.7
+
+  .doctors-advice-swiper__button-prev, .doctors-advice-swiper__button-next
+    bottom: -80px
+
+// ≥576px
++media-breakpoint-down(sm)
+  .doctors-advice-swiper__button-prev
+    right: 78px
+// doctors-advice END

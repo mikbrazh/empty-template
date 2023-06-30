@@ -18,10 +18,22 @@ p
   padding: 0
   margin: 0
 
-ul
+strong
+  font-weight: normal
+
+ul, li
   padding: 0
   margin: 0
   list-style: none
+
+dl, dt, dd
+  padding: 0
+  margin: 0
+  font-weight: normal
+
+blockquote, cite, time
+  padding: 0
+  margin: 0
 
 a
   text-decoration: none
@@ -30,6 +42,7 @@ button
   padding: 0
   margin: 0
   border: none
+  color: $grey
   background: transparent
 
 input, textarea
@@ -40,7 +53,6 @@ input, textarea
   background: transparent
 
 // Дефолтный SASS
-
 body
   // Центрирование для верстки компонентов
   // display: flex
@@ -50,35 +62,442 @@ body
 
   font-family: $Roboto400
   font-size: 16px
-  line-height: 1.65
-  letter-spacing: 1.25px
-  color: $vulcan
-  background-color: $milk
-  h1
-    font-family: $Raleway700
-    margin-bottom: 50px
-  p
-    margin-bottom: 30px
+  line-height: 1.625
+  letter-spacing: normal
+  color: $grey
+  background-color: $white
+  h1, h2, h3, h4, h5, h6
+    font-family: $Jost400
+    letter-spacing: 1.25px
+    color: $darkGrey
   a
-    color: $vulcan
+    color: $grey
+    cursor: pointer
+    &:hover
+      color: $grey
 
 ::placeholder
-  color: $milk
+  color: $grey
 
 ::selection
-  color: $accent
-  background-color: $vulcan
+  color: $white
+  background-color: $grey
 
 .img-responsive
   display: block
   max-width: 100%
   height: auto
-  &--width-100 // ЗАЧЕМ???
+  &.img-responsive--w100
     width: 100%
 
-.visually-hidden
+.display-none
   display: none
 
+// buttons default START
+.button-default-18
+  display: block
+  padding: 16px 28px
+  font-family: $Jost500
+  font-size: 18spx
+  font-weight: 500
+  font-style: normal
+  line-height: 1.75
+  text-align: center
+  color: $white
+  background-color: $accent
+  border: 1px solid $accent
+  border-radius: 4px
+  cursor: pointer
+  user-select: none
+  transition: $buttons
+  &:hover, active
+    color: $white
+    background-color: $accentHoverActive
+    border-color: $accentHoverActive
+
+.button-default-16
+  display: block
+  padding: 16px 28px
+  font-family: $Jost500
+  font-size: 16px
+  font-weight: 500
+  font-style: normal
+  line-height: 1.625
+  text-align: center
+  color: $white
+  background-color: $accent
+  border: 1px solid $accent
+  border-radius: 4px
+  cursor: pointer
+  user-select: none
+  transition: $buttons
+  &:hover,active
+    color: $white
+    background-color: $accentHoverActive
+    border-color: $accentHoverActive
+
+.button-default-16-white
+  display: block
+  padding: 16px 28px
+  font-family: $Jost500
+  font-size: 16px
+  font-weight: 500
+  font-style: normal
+  line-height: 1.625
+  text-align: center
+  color: $darkGrey
+  background-color: $white
+  border: 1px solid $borderGrey
+  border-radius: 4px
+  cursor: pointer
+  user-select: none
+  transition: $buttons
+  &:hover
+    color: $white
+    background-color: $accentHoverActive
+    border-color: $accentHoverActive
+// buttons default END
+
+// tabs default START
+.tab-default-16
+  display: inline-block
+  padding: 7px 41px
+  font-family: $Jost500
+  font-size: 16px
+  line-height: 1.625
+  text-align: center
+  color: $grey
+  background-color: $white
+  border: 1px solid $white
+  border-radius: 4px
+  cursor: pointer
+  user-select: none
+  transition: $navLinks
+  &:hover
+    color: $darkGrey
+    border-color: $accent
+// tabs default END
+
+// font default START
+.section-title
+  font-family: $Jost400
+  font-size: 58px
+  line-height: 1
+  color: $darkGrey
+
+.section-subtitle
+  font-family: $Jost400
+  font-size: 24px
+  line-height: 1.16
+  color: $grey
+
+.section-text
+  font-family: $Roboto400
+  font-size: 16px
+  line-height: 1.625
+  color: $grey
+// font default END
+
+// swiper buttons default START
+.button-prev-default
+  z-index: 1
+  position: absolute
+  width: 56px
+  height: 56px
+  background-color: $white
+  border: 1px solid #E0E0E0
+  border-radius: 50%
+  transition: border-color $navLinks
+  cursor: pointer
+  &::before
+    content: ''
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 14px
+    height: 14px
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1IDhIMU0xIDhMOCAxNU0xIDhMOCAxIiBzdHJva2U9IiM2QTZBNkEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=")
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+  &:hover
+    border-color: $accentHoverActive
+  &:hover:before
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1IDhIMU0xIDhMOCAxNU0xIDhMOCAxIiBzdHJva2U9IiM5NzBBMTciIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=")
+
+.button-next-default
+  z-index: 1
+  position: absolute
+  width: 56px
+  height: 56px
+  background-color: $white
+  border: 1px solid #E0E0E0
+  border-radius: 50%
+  transition: border-color $navLinks
+  cursor: pointer
+  &::before
+    content: ''
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%) rotate(180deg)
+    width: 14px
+    height: 14px
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1IDhIMU0xIDhMOCAxNU0xIDhMOCAxIiBzdHJva2U9IiM2QTZBNkEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=")
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+  &:hover
+    border-color: $accentHoverActive
+  &:hover:before
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1IDhIMU0xIDhMOCAxNU0xIDhMOCAxIiBzdHJva2U9IiM5NzBBMTciIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=")
+// swiper buttons default END
+
+// swiper-pagination-bullet START
+.swiper-pagination-bullet
+  display: inline-block
+  line-height: 0
+  margin-right: 7px
+  width: 28px
+  height: 100%
+  background-color: #E0E0E0
+  border-radius: 4px
+  &:last-child
+    margin-right: 0
+
+.swiper-pagination-bullet-active
+  display: inline-block
+  width: 65px
+  height: 100%
+  background: $accent
+  border-radius: 4px
+// swiper-pagination-bullet START
+
+// input-default START
+.input-default
+  padding: 16px 20px
+  font-family: $Jost500
+  font-size: 18px
+  line-height: 1.5
+  color: $grey
+  border: 1px solid #E0E0E0
+  border-radius: 4px
+  caret-color: $accent
+// input-default END
+
+// checkbox-default START
+.checkbox-default
+  cursor: pointer
+
+.checkbox-default--hidden
+  z-index: -1
+  position: absolute
+  width: 0
+  height: 0
+  opacity: 0
+
+.checkbox-default:focus + .checkbox-custom
+  box-shadow: 0px 0px 0px 1px $grey, 0px 0px 10px #E0E0E0
+
+.checkbox-custom
+  position: relative
+  display: inline-block
+  width: 20px
+  height: 20px
+  background: #ffffff
+  border: 2px solid #E0E0E0
+  border-radius: 4px
+  vertical-align: sub
+  margin-right: 5px
+  &:before
+    content: ''
+    /* Выравнивание */
+    margin-left: 1px
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%) scale(0)
+    /* Галочка */
+    display: inline-block
+    width: 12px
+    height: 9px
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxNSAxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMi45NDU3IDAuNjIxNjlMNC41OTIzNCA4LjY4MzM2TDIuMzc1NjggNi4zMTUwMkMxLjk2NzM0IDUuOTMwMDIgMS4zMjU2OCA1LjkwNjY5IDAuODU5MDEgNi4yMzMzNkMwLjQwNDAxIDYuNTcxNjkgMC4yNzU2NzYgNy4xNjY2OSAwLjU1NTY3NiA3LjY0NTAyTDMuMTgwNjggMTEuOTE1QzMuNDM3MzQgMTIuMzExNyAzLjg4MDY4IDEyLjU1NjcgNC4zODIzNCAxMi41NTY3QzQuODYwNjggMTIuNTU2NyA1LjMxNTY4IDEyLjMxMTcgNS41NzIzNCAxMS45MTVDNS45OTIzNCAxMS4zNjY3IDE0LjAwNzMgMS44MTE2OSAxNC4wMDczIDEuODExNjlDMTUuMDU3MyAwLjczODM1NiAxMy43ODU3IC0wLjIwNjY0MyAxMi45NDU3IDAuNjEwMDIzVjAuNjIxNjlaIiBmaWxsPSIjQjUwNzE3Ii8+Cjwvc3ZnPgo=")
+    background-size: contain
+    background-repeat: no-repeat
+
+    transition: 0.2s ease-in
+
+.checkbox-default:checked + .checkbox-custom::before
+  transform: translate(-50%, -50%) scale(1)
+
+.checkbox-label-default
+  font-family: $Roboto400
+  font-size: 15px
+  line-height: 1.53
+  color: #6A6A6A
+  cursor: pointer
+  user-select: none
+// checkbox-default END
+
+// breadcrumbs START
+.breadcrumbs-block
+  padding-top: 60px
+  margin-bottom: 60px
+  +media-breakpoint-down(md)
+    padding-top: 13px
+    margin-bottom: 30px
+
+.breadcrumbs__item
+  display: inline-block
+  font-family: $Roboto400
+  font-size: 15px
+  line-height: 1.53
+  color: $darkGrey
+
+.breadcrumbs__link
+  color: $grey    
+
+.breadcrumbs__link--is-active
+  color: $darkGrey
+  &:hover
+    color: $darkGrey
+// breadcrumbs END
+
+// pagination START
+.pagination
+  text-align: center
+
+.pagination__item
+  display: inline-block
+  position: relative
+  cursor: pointer
+  &:first-child, &:nth-child(5)
+    margin-right: 50px
+  &:nth-child(2), &:nth-child(3), &:nth-child(4)
+    margin-right: 35px
+
+.pagination__item-prev
+  transition: $navLinks
+  &:hover .pagination__arrow-prev
+    stroke: $accent
+
+.pagination__item-next
+  transition: $navLinks
+  &:hover .pagination__arrow-next
+    stroke: $accent
+
+.pagination__link
+  display: inline-block
+
+.pagination__link--number
+  font-family: $Jost400
+  font-size: 16px
+  line-height: 1.625
+  color: $darkGrey
+  &:hover
+    color: $darkGrey
+
+.pagination__link--text
+  font-family: $Roboto400
+  font-size: 15px
+  line-height: 1.5
+  color: $grey
+
+.pagination__link--is-active
+  padding: 7px 16px
+  color: $white
+  border-radius: 8px
+  background-color: $accent
+  &:hover
+    color: $white
+
+.pagination__arrow-prev
+  position: absolute
+  top: 50%
+  left: -20px
+  transform: translateY(-50%)
+  width: 12px
+  height: 12px
+  stroke: $darkGrey
+
+.pagination__arrow-next
+  position: absolute
+  top: 50%
+  transform: translateY(-50%) rotate(180deg)
+  right: -20px
+  width: 12px
+  height: 12px
+  stroke: $darkGrey
+
+// ≥576px
++media-breakpoint-down(sm)
+  .pagination__item
+    &:first-child, &:nth-child(5)
+      margin-right: 14px
+    &:nth-child(2), &:nth-child(3), &:nth-child(4)
+      margin-right: 26px
+// pagination END
+
 // Кастомный SASS
-@import "_sections/_main"
-@import "media" // Всегда в конце
+@import "_sections/_1-header"
+
+@import "_sections/_main/_2-main-promo"
+@import "_sections/_main/_3-our-services"
+@import "_sections/_main/_4-comfort-place-image"
+@import "_sections/_main/_5-patient-reviews"
+@import "_sections/_main/_6-online-consultation"
+@import "_sections/_main/_7-our-doctors"
+@import "_sections/_main/_8-contacts"
+@import "_sections/_main/_9-works-examples"
+@import "_sections/_main/_10-comfort-place-no-image"
+@import "_sections/_main/_11-consultation-appointment"
+
+@import "_sections/_services/_2-services"
+
+@import "_sections/_service-categories/_2-dental-treatment"
+@import "_sections/_service-categories/_3-services-types"
+@import "_sections/_service-categories/_11-comfort-place-text"
+@import "_sections/_service-categories/_10-symptoms"
+@import "_sections/_service-categories/_12-more-services"
+@import "_sections/_service-categories/_4-caries-treatment"
+@import "_sections/_service-categories/_13-doctors-advice"
+@import "_sections/_service-categories/_5-price-popular"
+
+@import "_sections/_services-sub-category/_2-caries-treatment-one-image"
+@import "_sections/_services-sub-category/_10-clinics-life"
+
+@import "_sections/_about/_2-about-clinic"
+@import "_sections/_about/_3-treatment-philosophy"
+@import "_sections/_about/_5-four-advantages"
+@import "_sections/_about/_8-comfort-place-image-right"
+@import "_sections/_about/_4-certificates"
+
+@import "_sections/_prices/_prices"
+
+@import "_sections/_team/_doctors"
+
+@import "_sections/_team-detail/_surname"
+@import "_sections/_team-detail/_services-provided"
+
+@import "_sections/_sale-detail/_special-offer"
+
+@import "_sections/_sale/_stocks"
+
+@import "_sections/_blog/_articles"
+
+@import "_sections/_blog-detail/_article"
+
+@import "_sections/_404"
+
+@import "_sections/_modal"
+
+@import "_sections/_modal-thanks"
+
+@import "_sections/_cases/_cases"
+
+@import "_sections/_testimonials/_reviews"
+
+@import "_sections/_12-footer"
+
+// @import "media" // Всегда в конце

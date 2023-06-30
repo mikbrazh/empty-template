@@ -1,0 +1,125 @@
+// modal START
+.modal
+  position: relative
+  padding: 72px 95px
+  display: inline-block
+  max-width: 500px
+  height: auto
+  background-image: url(../img/@2x/modal-bg@2x.jpg)
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+
+.modal__content
+  max-width: 310px
+  height: auto
+
+.modal__title
+  margin-bottom: 40px
+  font-family: $Jost400
+  font-size: 42px
+  line-height: 1.095
+  text-align: center
+  color: $darkGrey
+
+.modal__form
+  text-align: center
+
+.modal__text-input
+  display: block
+  margin: 0 auto 14px
+  width: 100%
+
+.modal__tel-input
+  display: block
+  margin: 0 auto 14px
+  width: 100%
+
+.modal__checkbox-label
+  position: relative
+  padding-left: 38px
+  margin-bottom: 14px
+  width: 310px
+  text-align: left
+
+.modal__checkbox-custom
+  margin: 0
+  position: absolute
+  top: 50%
+  left: 0
+  transform: translateY(-50%)
+
+.modal__submit-button
+  display: block
+  margin: 0 auto
+  width: 100%
+
+.modal__form-group
+  margin-bottom: 24px
+
+// Кнопка закрытия START
+.modal__close-button 
+  position: absolute
+  right: 20px
+  top: 20px
+  width: 31px
+  height: 31px
+
+.modal__close-button:before, .modal__close-button:after
+  position: absolute
+  content: ''
+  top: 0
+  left: 50%
+  height: 31px
+  width: 2px
+  background-color: $darkGrey
+  transition: $navLinks
+
+.modal__close-button:hover:before
+  background-color: $accent
+
+.modal__close-button:hover:after
+  background-color: $accent
+
+.modal__close-button:before 
+  transform: rotate(45deg)
+
+.modal__close-button:after 
+  transform: rotate(-45deg)
+// Кнопка закрытия END
+
+// Media
+// ≥576px
++media-breakpoint-down(sm)
+  .modal
+    padding: 34px 25px 44px
+
+  .modal__content
+    max-width: 270px
+
+  .modal__title
+    margin-bottom: 20px
+    font-size: 32px
+    line-height: 1.1875
+    text-align: center
+
+  .modal__text-input
+    font-size: 16px
+    line-height: 1.5
+
+  .modal__tel-input
+    font-size: 16px
+    line-height: 1.5
+
+  .modal__checkbox-label
+    margin-bottom: 20px
+    font-size: 11px
+    line-height: 1.6
+
+  .modal__close-button 
+    width: 20px
+    height: 20px
+
+  .modal__close-button:before, .modal__close-button:after
+    height: 20px
+// modal END

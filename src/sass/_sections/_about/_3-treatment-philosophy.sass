@@ -1,0 +1,92 @@
+// treatment-philosophy START
+.treatment-philosophy
+  margin-bottom: 110px
+
+.treatment-philosophy__title
+  margin-bottom: 70px
+  
+.treatment-philosophy__list
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  gap: 30px
+  justify-content: center
+
+.treatment-philosophy__list-item
+  position: relative
+  display: flex
+  gap: 21px
+  flex-direction: column
+  justify-content: flex-end
+  align-items: center
+  padding: 21px 30px
+  width: 278px
+  max-width: 278px
+  height: 327px
+  text-align: center
+  border-radius: 4px
+  background: $lightGrey
+
+.treatment-philosophy__list-icon
+  position: absolute
+  top: 20%
+  left: 50%
+  transform: translateX(-50%)
+  width: 42px
+  height: 42px
+
+.treatment-philosophy__list-title
+  font-family: $Jost500
+  font-size: 24px
+  line-height: 1.16
+  color: $darkGrey
+
+.treatment-philosophy__list-text
+  font-family: $Roboto400
+  font-size: 15px
+  line-height: 1.53
+  text-align: center
+  color: $grey
+
+// Media
+// ≥992px
++media-breakpoint-down(lg)
+  .treatment-philosophy__title
+    text-align: center
+
+// ≥768px
++media-breakpoint-down(md)
+  .treatment-philosophy
+    padding-bottom: 50px
+    margin-bottom: 0
+
+  .treatment-philosophy__title
+    margin-bottom: 54px
+    font-size: 32px
+    line-height: 1.18
+
+  .treatment-philosophy__subtitle
+    margin-bottom: 30px
+    font-family: $Roboto400
+    font-size: 14px
+    line-height: 1.57
+    text-align: center
+
+  .treatment-philosophy__list
+    gap: 30px 0
+
+  .treatment-philosophy__list-item
+    width: 50%
+    height: 170px
+    font-family: $Jost600
+    font-size: 15px
+    line-height: 1.33
+
+  .treatment-philosophy__list-icon
+    top: 10%
+
+  .treatment-philosophy__list-title
+    font-family: $Jost600
+    font-size: 15px
+    line-height: 1.33
+// treatment-philosophy END

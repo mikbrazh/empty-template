@@ -26,11 +26,16 @@ const config = {
       }
 
 // На будущее:
-//   gulp png sprites
-//   gulp svg sprites
-//   gulp favicons
-//   настроить автозаполнение путей
-//   подумать нужен ли bower
+// gulp png sprites
+// gulp favicons
+// настроить автозаполнение путей
+// подумать нужен ли bower
+// gulp-avif
+// gulp-webp
+// gulp-fonter
+// gulp-svg-sprite
+// watch img
+
 
 // РАБОТА С HTML
 
@@ -57,34 +62,41 @@ function buildhtml() {
 // РАБОТА С CSS
 
 // Обработка css
-function buildcss() {
-  return src(''+config.src+'/css/*.css')
-    .pipe(rename({suffix: '.min', prefix: ''}))
-    // .pipe(csso()) // Минификация css
-    .pipe(dest(''+config.dist+'/css/'))
-    .pipe(browsersync.stream())
-}
+// function buildcss() {
+//   return src(''+config.src+'/css/*.css')
+//     .pipe(rename({suffix: '.min', prefix: ''}))
+//     // .pipe(csso()) // Минификация css
+//     .pipe(dest(''+config.dist+'/css/'))
+//     .pipe(browsersync.stream())
+// }
 
 // Обработка sass/scss
 function buildstyles() {
   return src(''+config.src+'/'+config.syntax+'/style.'+config.syntax+'')
-    .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
+    // .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({overrideBrowserslist: ['> 0.2%, last 10 versions, Firefox ESR']}))
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
     // .pipe(csso()) // Минификация css
     .pipe(rename({suffix: '.min', prefix: ''}))
     .pipe(dest(''+config.dist+'/css/'))
     .pipe(browsersync.stream());
 }
 
-// Обработка вендорных sass/scss
+// Обработка вендорных sass/scss и css
 function buildvendorstyles() {
+  // Обработка sass/scss
   return src(''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+'')
-    .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
+    // .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
     .pipe(sass().on('error', sass.logError))
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
+
+    // Обработка css
+    .pipe(src([''+config.src+'/css/*.css', '!'+config.src+'/css/_*.css']))
+    // .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
+    
     .pipe(concat('vendor.min.css'))
+    // .pipe(sourcemaps.write())
     // .pipe(csso()) // Минификация css
     .pipe(dest(''+config.dist+'/css/'))
     .pipe(browsersync.stream());
@@ -95,9 +107,9 @@ function buildvendorstyles() {
 // Обработка js
 function buildjs() {
   return src(''+config.src+'/js/main.js')
-    .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
+    // .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
     .pipe(concat('main.min.js'))
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
     // .pipe(uglify()) // Минификация js
     .pipe(dest(''+config.dist+'/js'))
     .pipe(browsersync.stream());
@@ -107,10 +119,13 @@ function buildjs() {
 function buildvendorjs() {
   return src([
     ''+config.src+'/vendor/vendor.js', // Сюда добавляем js библиотеки
+    // ''+config.src+'/vendor/swiper/_dist/swiper-bundle.min.js',
+    // ''+config.src+'/vendor/canvi/canvi.js',
+    // ''+config.src+'/vendor/fslightbox-basic-3.4.1/fslightbox.js',
     ])
-    .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
+    // .pipe(sourcemaps.init()) // Для работы должна быть отключена минификация
     .pipe(concat('vendor.min.js'))
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
     // .pipe(uglify()) // Минификация js
     .pipe(dest(''+config.dist+'/js'))
     .pipe(browsersync.stream());
@@ -227,14 +242,14 @@ function killdist() {
 // ОТСЛЕЖИВАНИЕ ИЗМЕНЕНИЙ
 
 function watching() {
-  watch(''+config.src+'/css/**/*.css', buildcss);
+  // watch(''+config.src+'/css/**/*.css', buildcss);
   watch(''+config.src+'/'+config.syntax+'/**/*.'+config.syntax+'', buildstyles);
   // watch([''+config.src+'/'+config.syntax+'/style.'+config.syntax+'',
   //        ''+config.src+'/'+config.syntax+'/_sections/*.'+config.syntax+''], buildstyles);
-  watch(''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+'', buildvendorstyles);
+  watch([''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+'', ''+config.src+'/css/*.css'], buildvendorstyles);
   watch(''+config.src+'/js/**/*.js', buildjs);
   watch(''+config.src+'/vendor/**/*.*', buildvendorjs);
-  watch([''+config.src+'/index.html', ''+config.src+'/html/*.html'], series(includehtml, buildhtml));
+  watch([''+config.src+'/index.html', ''+config.src+'/html/**/*.html', '!'+config.src+'/html/_buffer/_index.html'], series(includehtml, buildhtml));
 }
 
 // СИНХРОНИЗАЦИЯ В БРАУЗЕРЕ
@@ -248,7 +263,7 @@ function sync() {
 
 exports.includehtml       = includehtml;
 exports.buildhtml         = buildhtml;
-exports.buildcss          = buildcss;
+// exports.buildcss          = buildcss;
 exports.buildstyles       = buildstyles;
 exports.buildvendorstyles = buildvendorstyles;
 exports.buildjs           = buildjs;
@@ -274,6 +289,10 @@ exports.killimg           = parallel(killimg1x, killimg2x, killsvg);
 exports.buildfav          = parallel(buildfavico, buildfavimg);
 exports.buildfonts        = parallel(buildttf, buildwoff2);
 
-exports.build             = series(killdist, parallel(series(includehtml, buildhtml), buildimg1x, buildimg2x, buildsvg, buildfavico, buildfavimg, buildttf, buildwoff2, buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs));
+// exports.build             = series(killdist, parallel(series(includehtml, buildhtml), buildimg1x, buildimg2x, buildsvg, buildfavico, buildfavimg, buildttf, buildwoff2, buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs));
 
-exports.default           = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
+exports.build             = series(killdist, parallel(series(includehtml, buildhtml), buildimg1x, buildimg2x, buildsvg, buildfavico, buildfavimg, buildttf, buildwoff2, buildstyles, buildvendorstyles, buildjs, buildvendorjs));
+
+// exports.default           = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
+
+exports.default           = parallel(series(includehtml, buildhtml), buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);

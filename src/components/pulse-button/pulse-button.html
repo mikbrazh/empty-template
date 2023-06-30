@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pulse-button</title>
+  <style>
+    body {
+      background: tomato;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .pulse {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      height: 150px;
+      color:gray;
+      background: white;
+      border-radius: 50%;
+      animation: radial-pulse 1s infinite;
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 100vh;
+      background-color: grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes radial-pulse {
+      0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+      }
+
+      100% {
+        box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="pulse">Content</div>
+  </div>
+  
+</body>
+</html>

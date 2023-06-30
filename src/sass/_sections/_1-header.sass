@@ -1,0 +1,212 @@
+// header START
+.header
+  margin-bottom: 35px
+
+.header__top-block
+  padding-top: 23px
+  margin-bottom: 30px
+
+.header__logo-link
+  display: inline-block
+
+.header__logo-image
+  width: 203px
+  height: auto
+
+.header__contacts-block
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: flex-end
+  gap: 20px
+  padding-right: 20px
+
+.header__social-block
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  gap: 5px
+
+.header__social-link
+  display: inline-block
+  width: 34px
+  height: 34px
+
+.header__social-image
+  width: 100%
+  height: auto
+
+.header__phone-block
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+
+
+.header__phone-number
+  font-family: $Jost400
+  font-style: normal
+  font-weight: 400
+  font-size: 24px
+  line-height: 1.75
+  color: $darkGrey
+  &:hover
+    color: $darkGrey
+
+.header__timetable
+  font-family: $Jost500
+  font-style: normal
+  font-weight: 500
+  font-size: 16px
+  line-height: 1.625
+  letter-spacing: 0.02em
+  text-transform: uppercase
+  color: #828282
+
+.header__menu
+  display: flex
+  justify-content: space-between
+
+.header__header-mobile
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+
+.header__menu-item, .header__menu-item-mobile
+  display: inline-block
+
+.header__menu-link, .header__menu-link-mobile
+  font-family: $Jost500
+  font-style: normal
+  font-weight: 500
+  font-size: 16px
+  line-height: 1.625
+  letter-spacing: 0.02em
+  text-transform: uppercase
+  color: $darkGrey
+  transition: $navLinks
+  &:hover
+    color: $accentHoverActive
+
+.header__menu-link-mobile
+  font-size: 12px
+  list-style: 1.5
+
+.header__menu-item-mobile::after
+  left: -18px
+
+.header__menu-item--active
+  position: relative
+  &::after
+    content: ''
+    position: absolute
+    top: 12px
+    right: -20px
+    transform: translateY(-50%)
+    width: 10px
+    height: 6px
+    background-image: url(../img/svg/arrow-menu-item.svg)
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+
+.header__nav
+  position: relative
+
+.header__nav-mobile
+  display: inline-block
+  padding-top: 3px
+  width: 19px
+  height: 19px
+
+// header__submenu START
+.header__submenu
+  overflow: scroll
+  position: absolute
+  top: 50px
+  left: 0
+  right: 0
+  padding: 35px 80px 0
+  height: 572px
+  background-color: $white
+  border-radius: 4px
+  box-shadow: 0px 14px 35px rgba(0, 0, 0, 0.08)
+
+.header__submenu-block
+  margin-bottom: 50px
+
+.header__submenu-link
+  display: inline-block
+  margin-bottom: 10px
+  font-family: $Roboto400
+  font-size: 14px
+  line-height: 1.42
+  color: $grey
+  transition: $navLinks
+  &:hover
+    color: $accent
+
+.header__submenu-title
+  margin-bottom: 14px
+  font-family: $Jost500
+  font-size: 18px
+  line-height: 1.5
+  color: $darkGrey
+  transition: $navLinks
+  &:hover
+    color: $accent
+// header__submenu END
+
+// Media
+// ≥1400px
++media-breakpoint-down(xxl)
+  .header__order-call-button
+    padding-left: 20px
+    padding-right: 20px
+
+// ≥1200px
++media-breakpoint-down(xl)
+
+// ≥992px
++media-breakpoint-down(lg)
+  .header__logo-image
+    width: calc(203px * 0.8)
+
+  .header__order-call-button
+    font-size: 14px
+  
+  .header__contacts-block
+    padding-right: 0
+
+  .header__phone-number
+    font-size: 22px
+    line-height: 1.5
+
+  .header__timetable
+    font-size: 14px
+
+  .header__menu-link
+    font-size: 14px
+
+  .header__menu-item--active::after
+    top: 52%
+    right: -13px
+    
+
+// ≥768px
++media-breakpoint-down(md)
+  .header__top-block
+    padding-top: 7px
+    margin-bottom: 48px
+
+  .header__logo-link-mobile
+    text-align: center
+
+  .header__logo-image-mobile
+    width: 89px
+    height: auto
+    text-align: center
+
+  .header__menu-mobile
+    display: inline-block
+// header END

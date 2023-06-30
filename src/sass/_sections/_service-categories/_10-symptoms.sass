@@ -1,0 +1,72 @@
+// symptoms START
+.symptoms
+  padding-top: 110px
+  padding-bottom: 110px
+
+.symptoms__title
+  margin-bottom: 16px
+  font-family: $Jost400
+  font-size: 32px
+  line-height: 1.18
+  color: $darkGrey
+
+.symptoms__text
+  margin-bottom: 16px
+  font-family: $Roboto400
+  font-size: 16px
+  line-height: 1.625
+  color: $grey
+  &:last-child
+    margin-bottom: 0
+
+.symptoms__text-block
+  padding-right: 50px
+  margin-bottom: 32px
+
+.symptoms__image-block
+  padding-left: 42px
+
+.main-promo__appointment-button
+  width: 229px
+
+// Media
+// ≥1200px
++media-breakpoint-down(xl)
+  .symptoms__text-block
+    padding-right: 0
+
+// ≥992px
++media-breakpoint-down(lg)
+  .symptoms
+    padding-top: 0
+    padding-bottom: 0
+
+  .symptoms__title
+    margin-bottom: 20px
+    font-family: $Jost500
+    font-size: 24px
+    line-height: 1.16
+
+  .symptoms__image-block
+    margin: 0 auto 20px
+
+  .symptoms__text
+    margin-bottom: 8px
+    font-family: $Roboto400
+    font-size: 14px
+    line-height: 1.57
+    &:last-child
+      margin-bottom: 0
+    
+  .symptoms__text-block
+    margin-bottom: 20px
+
+  .symptoms__image-block
+    padding-left: 0
+
+  .symptoms__image
+    margin: 0 auto
+
+  .main-promo__appointment-button
+    width: 100%
+// symptoms END
