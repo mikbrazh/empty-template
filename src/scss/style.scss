@@ -1,15 +1,17 @@
-// Вендорные миксины
 // Миксины Бутстрапа для _media.sass (порядок именно такой)
 @import "../vendor/bootstrap-5.2.3/scss/functions";
 @import "../vendor/bootstrap-5.2.3/scss/variables";
 @import "../vendor/bootstrap-5.2.3/scss/mixins";
 @import "_mixins/emizer"; // Перевод px в em
 
-// Кастомный импорт
-@import "fonts";
+// Переменные
 @import "vars";
 
-// Сброс стилей
+/* ======= Шрифты START ======= */
+@import "fonts";
+/* ======= Шрифты END ======= */
+
+/* ======= Сброс стилей START ======= */
 h1,
 h2,
 h3,
@@ -51,8 +53,9 @@ textarea {
   background: transparent;
 }
 
-// Дефолтный SASS
+/* ======= Сброс стилей END ======= */
 
+/* ======= Общий CSS START ======= */
 body {
   // Центрирование для верстки компонентов
   // display: flex;
@@ -103,7 +106,12 @@ body {
 .visually-hidden {
   display: none
 }
+/* ======= Общий CSS END ======= */
 
-// Кастомный SASS
-@import "_sections/_main";
-@import "media"; // Всегда в конце
+/* ======= Кастомный CSS START ======= */
+// @import "_parts/_header";
+// @import "_parts/_sections/_name-section";
+
+// Общие Media
+// @import "media"; // Всегда в конце
+/* ======= Кастомный CSS END ======= */

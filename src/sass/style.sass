@@ -1,15 +1,20 @@
-// Вендорные миксины
+/* ======= Вендорные миксины START ======= */
 // Миксины Бутстрапа для _media.sass (порядок именно такой)
 @import "../vendor/bootstrap-5.2.3/scss/functions"
 @import "../vendor/bootstrap-5.2.3/scss/variables"
 @import "../vendor/bootstrap-5.2.3/scss/mixins"
 @import "_mixins/emizer" // Перевод px в em
+/* ======= Вендорные миксины END ======= */
 
-// Кастомный импорт
+/* ======= Шрифты START ======= */
 @import "fonts"
-@import "vars"
+/* ======= Шрифты END ======= */
 
-// Сброс стилей
+/* ======= Переменные START ======= */
+@import "vars"
+/* ======= Переменные END ======= */
+
+/* ======= Сброс стилей START ======= */
 h1, h2, h3, h4, h5, h6
   padding: 0
   margin: 0
@@ -51,8 +56,10 @@ input, textarea
   border: none
   outline: none
   background: transparent
+/* ======= Сброс стилей END ======= */
 
-// Дефолтный SASS
+
+/* ======= Общий CSS START ======= */
 body
   // Центрирование для верстки компонентов
   // display: flex
@@ -87,11 +94,7 @@ body
   display: block
   max-width: 100%
   height: auto
-<<<<<<< HEAD
-  &.img-responsive--w100
-=======
   &--width-100
->>>>>>> 34b87b69ae5be857a056f0efdb4cf4ba2c307790
     width: 100%
 
 .display-none
@@ -442,71 +445,10 @@ body
     &:nth-child(2), &:nth-child(3), &:nth-child(4)
       margin-right: 26px
 // pagination END
+/* ======= Общий CSS END ======= */
 
-// Кастомный SASS
-<<<<<<< HEAD
-@import "_sections/_1-header"
-
-@import "_sections/_main/_2-main-promo"
-@import "_sections/_main/_3-our-services"
-@import "_sections/_main/_4-comfort-place-image"
-@import "_sections/_main/_5-patient-reviews"
-@import "_sections/_main/_6-online-consultation"
-@import "_sections/_main/_7-our-doctors"
-@import "_sections/_main/_8-contacts"
-@import "_sections/_main/_9-works-examples"
-@import "_sections/_main/_10-comfort-place-no-image"
-@import "_sections/_main/_11-consultation-appointment"
-
-@import "_sections/_services/_2-services"
-
-@import "_sections/_service-categories/_2-dental-treatment"
-@import "_sections/_service-categories/_3-services-types"
-@import "_sections/_service-categories/_11-comfort-place-text"
-@import "_sections/_service-categories/_10-symptoms"
-@import "_sections/_service-categories/_12-more-services"
-@import "_sections/_service-categories/_4-caries-treatment"
-@import "_sections/_service-categories/_13-doctors-advice"
-@import "_sections/_service-categories/_5-price-popular"
-
-@import "_sections/_services-sub-category/_2-caries-treatment-one-image"
-@import "_sections/_services-sub-category/_10-clinics-life"
-
-@import "_sections/_about/_2-about-clinic"
-@import "_sections/_about/_3-treatment-philosophy"
-@import "_sections/_about/_5-four-advantages"
-@import "_sections/_about/_8-comfort-place-image-right"
-@import "_sections/_about/_4-certificates"
-
-@import "_sections/_prices/_prices"
-
-@import "_sections/_team/_doctors"
-
-@import "_sections/_team-detail/_surname"
-@import "_sections/_team-detail/_services-provided"
-
-@import "_sections/_sale-detail/_special-offer"
-
-@import "_sections/_sale/_stocks"
-
-@import "_sections/_blog/_articles"
-
-@import "_sections/_blog-detail/_article"
-
-@import "_sections/_404"
-
-@import "_sections/_modal"
-
-@import "_sections/_modal-thanks"
-
-@import "_sections/_cases/_cases"
-
-@import "_sections/_testimonials/_reviews"
-
-@import "_sections/_12-footer"
-
+/* ======= Кастомный CSS START ======= */
+// @import "_parts/_header"
+// @import "_parts/_sections/_name-section"
 // @import "media" // Всегда в конце
-=======
-@import "_sections/_main"
-@import "media" // Всегда в конце
->>>>>>> 34b87b69ae5be857a056f0efdb4cf4ba2c307790
+/* ======= Кастомный CSS END ======= */
