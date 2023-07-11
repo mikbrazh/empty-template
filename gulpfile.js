@@ -14,7 +14,9 @@ const fileinclude  = require('gulp-file-include'),
       imageresize  = require('gulp-image-resize'),
       imagemin     = require('gulp-imagemin'),
       svgmin       = require('gulp-svgmin'),
+      webp         = require('gulp-webp'),
       ttf2woff2    = require('gulp-ttf2woff2'),
+      fonter       = require('gulp-fonter'),
       browsersync  = require('browser-sync').create();
 
 const config = {
@@ -27,18 +29,16 @@ const config = {
 
 // На будущее:
 // gulp png sprites
-// gulp favicons
-// настроить автозаполнение путей
-// подумать нужен ли bower
-// gulp-avif
-// gulp-webp
-// gulp-fonter
+// gulp favicons - не нужен
+// настроить автозаполнение путей +
+// подумать нужен ли bower - не нужен
+// gulp-avif - не нужен
+// gulp-webp +
+// gulp-fonter +
 // gulp-svg-sprite
-// watch img
-
+// watch img +
 
 // РАБОТА С HTML
-
 // Подключение html в html
 function includehtml() {
   return src(''+config.src+'/index.html')
@@ -60,16 +60,6 @@ function buildhtml() {
 }
 
 // РАБОТА С CSS
-
-// Обработка css
-// function buildcss() {
-//   return src(''+config.src+'/css/*.css')
-//     .pipe(rename({suffix: '.min', prefix: ''}))
-//     // .pipe(csso()) // Минификация css
-//     .pipe(dest(''+config.dist+'/css/'))
-//     .pipe(browsersync.stream())
-// }
-
 // Обработка sass/scss
 function buildstyles() {
   return src(''+config.src+'/'+config.syntax+'/style.'+config.syntax+'')
@@ -103,7 +93,6 @@ function buildvendorstyles() {
 }
 
 // РАБОТА С JS
-
 // Обработка js
 function buildjs() {
   return src(''+config.src+'/js/main.js')
@@ -132,7 +121,6 @@ function buildvendorjs() {
 }
 
 // РАБОТА С ИЗОБРАЖЕНИЯМИ
-
 // Обработка img
 function buildimg2x() {
   return src([''+config.src+'/img/**/*.*', '!'+config.src+'/img/**/*.svg', '!'+config.src+'/img/**/*/Thumbs.db', '!'+config.src+'/img/**/*/*.DS_Store'])
@@ -177,8 +165,20 @@ function killsvg() {
     .pipe(clean());
 }
 
-// РАБОТА С ФАВИКОНКАМИ
+// Конвертация в webp
+function buildwebp() {
+  return src(''+config.src+'/img/**/*.{jpg,jpeg,png}')
+  .pipe(webp( {quality: 50} ))
+  .pipe(dest(''+config.dist+'/img/webp/'));
+}
 
+// Удаление img в каталоге webp
+function killwebp() {
+  return src(''+config.dist+'/img/webp/', {allowEmpty: true})
+    .pipe(clean());
+}
+
+// РАБОТА С ФАВИКОНКАМИ
 // Обработка фавиконок img
 function buildfavimg() {
   return src([''+config.src+'/fav/*.*', '!'+config.src+'/fav/favicon.ico', '!'+config.src+'/fav/Thumbs.db', '!'+config.src+'/fav/*.DS_Store'])
@@ -198,11 +198,20 @@ function killfav() {
 }
 
 // РАБОТА СО ШРИФТАМИ
-
 // Обработка ttf и других
 function buildttf() {
   return src(''+config.src+'/fonts/**/*')
     .pipe(dest(''+config.dist+'/fonts/'));
+}
+
+// Конвертация в woff
+function buildwoff() {
+  return src(''+config.src+'/fonts/**/*.ttf')
+  .pipe(fonter({
+    subset: [66, 67, 68, 69, 70, 71],
+    formats: ['woff']
+  }))
+  .pipe(dest(''+config.dist+'/fonts/'));
 }
 
 // Конвертация в woff2
@@ -219,7 +228,6 @@ function killfonts() {
 }
 
 // КОПИРОВАНИЕ В ЛОКАЛЬНЫЙ КАТАЛОГ GITHUB PAGES
-
 // Копирование dist
 function buildpages() {
   return src(''+config.dist+'/**/*')
@@ -233,19 +241,15 @@ function killpages() {
 }
 
 // УДАЛЕНИЕ DIST
-
 function killdist() {
   return src(config.dist, {allowEmpty: true})
     .pipe(clean({force: true}));
 }
 
 // ОТСЛЕЖИВАНИЕ ИЗМЕНЕНИЙ
-
 function watching() {
-  // watch(''+config.src+'/css/**/*.css', buildcss);
+  watch([''+config.src+'/img/**/*'], parallel(buildimg1x, buildimg2x, buildsvg, buildwebp));
   watch(''+config.src+'/'+config.syntax+'/**/*.'+config.syntax+'', buildstyles);
-  // watch([''+config.src+'/'+config.syntax+'/style.'+config.syntax+'',
-  //        ''+config.src+'/'+config.syntax+'/_sections/*.'+config.syntax+''], buildstyles);
   watch([''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+'', ''+config.src+'/css/*.css'], buildvendorstyles);
   watch(''+config.src+'/js/**/*.js', buildjs);
   watch(''+config.src+'/vendor/**/*.*', buildvendorjs);
@@ -263,7 +267,6 @@ function sync() {
 
 exports.includehtml       = includehtml;
 exports.buildhtml         = buildhtml;
-// exports.buildcss          = buildcss;
 exports.buildstyles       = buildstyles;
 exports.buildvendorstyles = buildvendorstyles;
 exports.buildjs           = buildjs;
@@ -274,25 +277,24 @@ exports.killimg1x         = killimg1x;
 exports.killimg2x         = killimg2x;
 exports.buildsvg          = buildsvg;
 exports.killsvg           = killsvg;
+exports.buildwebp         = buildwebp;
+exports.killwebp          = killwebp;
 exports.buildfavico       = buildfavico;
 exports.buildfavimg       = buildfavimg;
 exports.killfav           = killfav;
 exports.buildttf          = buildttf;
+exports.buildwoff         = buildwoff;
 exports.buildwoff2        = buildwoff2;
 exports.killfonts         = killfonts;
 exports.buildpages        = buildpages;
 exports.killpages         = killpages;
 exports.killdist          = killdist;
 
-exports.buildimg          = parallel(buildimg1x, buildimg2x, buildsvg);
-exports.killimg           = parallel(killimg1x, killimg2x, killsvg);
+exports.buildimg          = parallel(buildimg1x, buildimg2x, buildsvg, buildwebp);
+exports.killimg           = parallel(killimg1x, killimg2x, killsvg, killwebp);
 exports.buildfav          = parallel(buildfavico, buildfavimg);
-exports.buildfonts        = parallel(buildttf, buildwoff2);
+exports.buildfonts        = parallel(buildttf, buildwoff, buildwoff2);
 
-// exports.build             = series(killdist, parallel(series(includehtml, buildhtml), buildimg1x, buildimg2x, buildsvg, buildfavico, buildfavimg, buildttf, buildwoff2, buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs));
-
-exports.build             = series(killdist, parallel(series(includehtml, buildhtml), buildimg1x, buildimg2x, buildsvg, buildfavico, buildfavimg, buildttf, buildwoff2, buildstyles, buildvendorstyles, buildjs, buildvendorjs));
-
-// exports.default           = parallel(series(includehtml, buildhtml), buildcss, buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
+exports.build             = series(killdist, parallel(series(includehtml, buildhtml), buildimg1x, buildimg2x, buildsvg, buildwebp, buildfavico, buildfavimg, buildttf, buildwoff, buildwoff2, buildstyles, buildvendorstyles, buildjs, buildvendorjs));
 
 exports.default           = parallel(series(includehtml, buildhtml), buildstyles, buildvendorstyles, buildjs, buildvendorjs, sync, watching);
