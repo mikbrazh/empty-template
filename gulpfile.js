@@ -17,6 +17,7 @@ const fileinclude  = require('gulp-file-include'),
       webp         = require('gulp-webp'),
       ttf2woff2    = require('gulp-ttf2woff2'),
       fonter       = require('gulp-fonter'),
+      svgsprite    = require('gulp-svg-sprite'),
       browsersync  = require('browser-sync').create();
 
 const config = {
@@ -28,14 +29,14 @@ const config = {
       }
 
 // На будущее:
-// gulp png sprites
+// gulp png sprites - не нужен
 // gulp favicons - не нужен
 // настроить автозаполнение путей +
 // подумать нужен ли bower - не нужен
 // gulp-avif - не нужен
 // gulp-webp +
 // gulp-fonter +
-// gulp-svg-sprite
+// gulp-svg-sprite +
 // watch img +
 
 // РАБОТА С HTML
@@ -178,6 +179,43 @@ function killwebp() {
     .pipe(clean());
 }
 
+// Создание SVG спрайта
+// More complex configuration example
+const svgspriteConfig = {
+  shape: {
+    dimension: { // Set maximum dimensions
+      maxWidth: 32,
+      maxHeight: 32
+    },
+    spacing: { // Add padding
+      padding: 10
+    },
+    dest: '/intermediate-svg/' // Keep the intermediate files
+  },
+  mode: {
+    view: { // Activate the «view» mode
+      bust: false,
+      render: {
+        css: true, // Activate CSS output (with default options)
+        scss: true // Activate Sass output (with default options)
+      }
+    },
+    symbol: true // Activate the «symbol» mode
+  }
+};
+
+function buildsvgsprite() {
+  return src(''+config.src+'/img/for_svg_sprite/**/*.svg')
+  .pipe(svgsprite(svgspriteConfig))
+  .pipe(dest(''+config.dist+'/img/svgsprite/'));
+}
+
+// Удаление img в каталоге webp
+function killsvgsprite() {
+  return src(''+config.dist+'/img/svgsprite/', {allowEmpty: true})
+    .pipe(clean());
+}
+
 // РАБОТА С ФАВИКОНКАМИ
 // Обработка фавиконок img
 function buildfavimg() {
@@ -279,6 +317,8 @@ exports.buildsvg          = buildsvg;
 exports.killsvg           = killsvg;
 exports.buildwebp         = buildwebp;
 exports.killwebp          = killwebp;
+exports.buildsvgsprite    = buildsvgsprite;
+exports.killsvgsprite     = killsvgsprite;
 exports.buildfavico       = buildfavico;
 exports.buildfavimg       = buildfavimg;
 exports.killfav           = killfav;
