@@ -246,8 +246,7 @@ function buildttf() {
 function buildwoff() {
   return src(''+config.src+'/fonts/**/*.ttf')
   .pipe(fonter({
-    subset: [66, 67, 68, 69, 70, 71],
-    formats: ['woff']
+    formats: ['woff'],
   }))
   .pipe(dest(''+config.dist+'/fonts/'));
 }
@@ -286,7 +285,7 @@ function killdist() {
 
 // ОТСЛЕЖИВАНИЕ ИЗМЕНЕНИЙ
 function watching() {
-  watch([''+config.src+'/img/**/*'], parallel(buildimg1x, buildimg2x, buildsvg, buildwebp));
+  watch([''+config.src+'/img/**/*'], parallel(buildimg1x, buildimg2x, buildsvg, buildwebp, buildsvgsprite));
   watch(''+config.src+'/'+config.syntax+'/**/*.'+config.syntax+'', buildstyles);
   watch([''+config.src+'/'+config.syntax+'/vendor.'+config.syntax+'', ''+config.src+'/css/*.css'], buildvendorstyles);
   watch(''+config.src+'/js/**/*.js', buildjs);
