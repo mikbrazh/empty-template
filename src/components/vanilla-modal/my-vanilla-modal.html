@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my-vanilla-modal</title>
+    <style>
+        /* ======= modal START ======= */
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+            overflow-y: scroll;
+        }
+
+        .modal--open {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .modal-order__bg {
+            position: absolute;
+            background: black;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .modal-order__layout {
+          display: flex;
+          justify-content: center;
+          position: relative;
+          padding: 105px 260px 260px 260px;
+          border-radius: 20px;
+          z-index: 1;
+        }
+
+        .modal-order__layout-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          pointer-events: none;
+          z-index: -1;
+          border-radius: 20px;
+        }
+
+        .modal-order__layout-image {
+          position: absolute;
+          bottom: 60px;
+          left: 50%;
+          transform: translateX(-60%);
+          max-width: 330px;
+          height: auto;
+          object-fit: cover;
+          object-position: center;
+          pointer-events: none;
+          z-index: -1;
+        }
+
+        .modal-order__close-button {
+            position: absolute;
+            right: 0;
+            top: -36px;
+            width: 36px;
+            height: 36px;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNiAzNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzQyN181NjQzKSI+CjxwYXRoIGQ9Ik0yOC41IDkuNjE1TDI2LjM4NSA3LjVMMTggMTUuODg1TDkuNjE1IDcuNUw3LjUgOS42MTVMMTUuODg1IDE4TDcuNSAyNi4zODVMOS42MTUgMjguNUwxOCAyMC4xMTVMMjYuMzg1IDI4LjVMMjguNSAyNi4zODVMMjAuMTE1IDE4TDI4LjUgOS42MTVaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzQyN181NjQzIj4KPHJlY3Qgd2lkdGg9IjM2IiBoZWlnaHQ9IjM2IiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+
+        .modal-order__title {
+            margin-bottom: 30px;
+            color: black;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 36px;
+            letter-spacing: 0;
+            line-height: 1.25;
+        }
+
+        .modal-order__subtitle {
+            color: black;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            line-height: 1.25;
+            letter-spacing: 0;
+        }
+/* ======= modal Media START ======= */
+@include media-breakpoint-down(xl) {
+    .modal-order__content {
+        max-width: 290px;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .modal-order__layout {
+        padding: 70px 35px 220px 35px;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .modal-order__title {
+        font-size: 30px;
+    }
+    .modal-order__subtitle {
+        font-size: 18px;
+    }
+}
+
+@media (any-pointer: coarse) and (max-height: 414px) {
+  .modal {
+    align-items: stretch;
+  }
+  .modal-order__layout {
+    margin-top: 50px;
+  }
+  .modal .container {
+    height: 600px;
+  }
+  .modal-order__bg {
+    height: 600px;
+  }
+}
+/* ======= modal Media END ======= */
+/* ======= modal END ======= */
+        /* ======= modal END ======= */
+    </style>
+</head>
+
+<body>
+    <!-- ======= modal START ======= -->
+    <a data-modal="modal-order">Open Modal</a>
+
+    <div class="modal modal-order" id="modal-order">
+        <div class="container">
+            <div class="modal-order__layout">
+                <div class="modal-order__content">
+                    <h2 class="modal-order__title">Спасибо<br class="d-inline"> за оставленную заявку!</h2>
+                    <p class="modal-order__subtitle">В ближайшее время с вами свяжется наш менеджер</p>
+                </div>
+                <button class="modal-order__close-button modal-exit"></button>
+                <img class="modal-order__layout-bg" src="img/@2x/modal-bg@2x.jpg" alt="Размытое изображение офиса">
+                <img class="modal-order__layout-image" src="img/@2x/modal-capsule-image@2x.png"
+                    alt="Изображение капсулы">
+            </div>
+        </div>
+        <div class="modal-order__bg modal-exit"></div>
+    </div>
+    <!-- ======= modal END ======= -->
+
+    <script>
+        /* ======= modal START ======= */
+        if (document.querySelector('.modal')) {
+
+            const html = document.querySelector('html');
+            const body = document.querySelector('body');
+
+            const modals = document.querySelectorAll('[data-modal]');
+
+            modals.forEach(function (trigger) {
+                trigger.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+
+                    // Убираем скролл с документа
+                    body.classList.add('is-static');
+                    html.classList.add('is-static');
+
+                    modal.classList.add('modal--open');
+                    const exits = modal.querySelectorAll('.modal-exit');
+                    exits.forEach(function (exit) {
+                        exit.addEventListener('click', function (event) {
+                            event.preventDefault();
+
+                            // Возвращаем скролл
+                            body.classList.remove('is-static');
+                            html.classList.remove('is-static');
+
+                            modal.classList.remove('modal--open');
+                        });
+                    });
+                });
+            });
+
+        }
+        /* ======= modal END ======= */
+    </script>
+</body>
+
+</html>

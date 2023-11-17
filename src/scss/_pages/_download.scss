@@ -1,0 +1,48 @@
+/* ======= download START ======= */
+.download {
+  background-color: var(--orange);
+}
+
+.download__layout {
+  position: relative;
+  padding: 34px 0 38px 130px;
+}
+
+.download__text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 425px;
+}
+
+.download__title {
+  display: inline-block;
+  margin-bottom: 40px;
+  color: var(--white, var(--white, #FFF));
+  font-family: $Montserrat-800;
+  font-size: 39px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.download__subtitle {
+  color: var(--black, var(--black, #272D2F));
+  text-align: center;
+  font-family: $Inter-300;
+  font-size: 25px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.download__catalog-image {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 515px;
+  height: 494px;
+}
+/* ======= download END ======= */

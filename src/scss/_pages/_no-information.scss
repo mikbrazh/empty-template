@@ -1,0 +1,9 @@
+/* ======= no-information START ======= */
+.no-information {
+  background-color: lighten($color: $temp, $amount: 20%);
+}
+
+.no-information__layout {
+  background-color: $temp;
+}
+/* ======= no-information END ======= */

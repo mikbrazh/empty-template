@@ -1,0 +1,263 @@
+<!-- Многоуровневое меню START -->
+<!-- # Многоуровневое меню html -->
+<div class="header-bottom">
+  <div class="container">
+    <div class="header-bottom__layout">
+      <nav class="header-bottom__menu">
+        <ul class="header-bottom__menu-list">
+         <li><a href="#">Главная</a></li>
+         <li><a href="#">О нас</a></li>
+         <li>
+          <a href="#">Услуги</a>
+          <ul class="header-bottom__submenu-list">
+            <li><a href="#">Косметический<br>ремонт</a></li>
+            <li><a href="#">Капитальный<br>ремонт</a></li>
+            <li><a href="#">Ремонт в<br>новостройке</a></li>
+            <li>
+              <a href="#">Дизайнерский<br>ремонт</a>
+              <ul class="header-bottom__submenu-list">
+                <li><a href="#">Дизайн</a></li>
+                <li><a href="#">Ремонт</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Ремонт под ключ</a></li>
+            <li><a href="#">Дизайн-проект квартиры</a></li>
+          </ul>
+        </li>
+         <li>
+          <a href="#">Портфолио</a>
+          <ul class="header-bottom__submenu-list">
+            <li><a href="#">Дизайн</a></li>
+            <li>
+              <a href="#">Ремонт</a>
+              <ul class="header-bottom__submenu-list">
+                <li>
+                  <a href="#">Дизайн</a>
+                  <ul class="header-bottom__submenu-list">
+                    <li><a href="#">Дизайн</a></li>
+                    <li><a href="#">Ремонт</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Ремонт</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+         <li><a href="#">Расчет стоимости</a></li>
+         <li><a href="#">Заказать замер</a></li>
+         <li>
+          <a href="#">Акции</a>
+          <ul class="header-bottom__submenu-list">
+            <li><a href="#">Дизайн</a></li>
+            <li><a href="#">Дизайн</a></li>
+            <li>
+              <a href="#">Дизайн</a>
+              <ul class="header-bottom__submenu-list">
+                <li>
+                  <a href="#">Дизайн</a>
+                  <ul class="header-bottom__submenu-list">
+                    <li><a href="#">Дизайн</a></li>
+                    <li><a href="#">Ремонт</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Ремонт</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Дизайн</a></li>
+            <li>
+              <a href="#">Ремонт</a>                   <ul class="header-bottom__submenu-list">
+                <li><a href="#">Дизайн</a></li>
+                <li><a href="#">Ремонт</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+         <li>
+          <a href="#">Рассрочка</a>
+          <ul class="header-bottom__submenu-list">
+            <li><a href="#">Дизайн</a></li>
+            <li>
+              <a href="#">Ремонт</a>
+              <ul class="header-bottom__submenu-list">
+                <li><a href="#">Дизайн</a></li>
+                <li><a href="#">Ремонт</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+         <li>
+          <a href="#">Блог</a>
+          <ul class="header-bottom__submenu-list">
+            <li><a href="#">Дизайн</a></li>
+            <li>
+              <a href="#">Ремонт</a>
+              <ul class="header-bottom__submenu-list">
+                <li>
+                  <a href="#">Дизайн</a>
+                  <ul class="header-bottom__submenu-list">
+                    <li><a href="#">Дизайн</a></li>
+                    <li><a href="#">Ремонт</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Ремонт</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!-- # Многоуровневое меню scss -->
+<style>
+/* ======= header__bottom START ======= */
+.header-bottom {
+	background: var(--lightGrey, #F7F7F7);
+}
+
+.header-bottom__layout {
+	padding: 14px 0;
+}
+
+.header-bottom__menu-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header-bottom__menu-list li {
+	position: relative;
+  line-height: 1;
+	cursor: pointer;
+	margin-bottom: 20px;
+	&:hover > .header-bottom__submenu-list {
+	  opacity: 1;
+	  visibility: visible;
+	}
+  &:hover > a:after {
+    transform: rotate(180deg);
+  }
+}
+
+.header-bottom__menu-list--has-margin {
+  margin-right: 15px;
+}
+
+.header-bottom__menu-link--has-arrow {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 5px;
+    top: 5px;
+    right: -15px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSI1IiB2aWV3Qm94PSIwIDAgOCA1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMy42NDY0NSA0LjM1MzU1QzMuODQxNzEgNC41NDg4MiA0LjE1ODI5IDQuNTQ4ODIgNC4zNTM1NSA0LjM1MzU1TDcuNTM1NTMgMS4xNzE1N0M3LjczMDggMC45NzYzMTEgNy43MzA4IDAuNjU5NzI4IDcuNTM1NTMgMC40NjQ0NjZDNy4zNDAyNyAwLjI2OTIwNCA3LjAyMzY5IDAuMjY5MjA0IDYuODI4NDMgMC40NjQ0NjZMNCAzLjI5Mjg5TDEuMTcxNTcgMC40NjQ0NjZDMC45NzYzMTEgMC4yNjkyMDQgMC42NTk3MjggMC4yNjkyMDQgMC40NjQ0NjYgMC40NjQ0NjZDMC4yNjkyMDQgMC42NTk3MjggMC4yNjkyMDQgMC45NzYzMTEgMC40NjQ0NjYgMS4xNzE1N0wzLjY0NjQ1IDQuMzUzNTVaTTMuNSAzTDMuNSA0TDQuNSA0TDQuNSAzTDMuNSAzWiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    transition: transform $navButton;
+  }
+}
+
+.header-bottom__menu-list a, .header-bottom__submenu-list a {
+	display: inline-block;
+	color: var(--black, var(--black, #272D2F));
+	font-family: $Montserrat-500;
+	font-size: 13px;
+	line-height: 1;
+	letter-spacing: 0;
+}
+
+.header-bottom__submenu-list {
+	position: absolute;
+	top: 15px;
+	left: 0;
+	padding: 17px;
+	width: 143px;
+	background: var(--grey, #E2E2E2);
+	border-radius: 5px;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity $navButton;
+	border-top: 14px solid transparent;
+  background-clip: padding-box;
+	z-index: 2;
+}
+
+.header-bottom__submenu-list:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -50px;
+	width: 50px;
+	height: 100%;
+	background-color: transparent;
+}
+
+.header-bottom__submenu-list li {
+  margin-bottom: 15px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.header-bottom__submenu-list .header-bottom__submenu-list {
+	top: -17px;
+	left: 126px;
+  border-top: none;
+}
+
+.header-bottom__menu-list > li:last-child .header-bottom__submenu-list, .header-bottom__menu-list > li:nth-last-child(2) .header-bottom__submenu-list, .header-bottom__menu-list > li:nth-last-child(3) .header-bottom__submenu-list {
+	left: auto;
+	right: 0;
+}
+
+.header-bottom__menu-list > li:last-child .header-bottom__submenu-list .header-bottom__submenu-list, .header-bottom__menu-list > li:nth-last-child(2) .header-bottom__submenu-list .header-bottom__submenu-list, li:nth-last-child(3) .header-bottom__submenu-list .header-bottom__submenu-list {
+	left: -160px;
+}
+
+.header-bottom__menu-list > li:last-child .header-bottom__submenu-list .header-bottom__submenu-list:before, .header-bottom__menu-list > li:nth-last-child(2) .header-bottom__submenu-list .header-bottom__submenu-list:before, .header-bottom__menu-list > li:nth-last-child(3) .header-bottom__submenu-list .header-bottom__submenu-list:before {
+	width: 0;
+}
+
+.header-bottom__menu-list > li:last-child .header-bottom__submenu-list .header-bottom__submenu-list:after, .header-bottom__menu-list > li:nth-last-child(2) .header-bottom__submenu-list .header-bottom__submenu-list:after, .header-bottom__menu-list > li:nth-last-child(3) .header-bottom__submenu-list .header-bottom__submenu-list:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: -50px;
+	width: 50px;
+	height: 100%;
+	background-color: transparent;
+}
+/* ======= header__bottom END ======= */
+</style>
+
+<!-- # Многоуровневое меню js -->
+<script>
+  // header-bottom menu START
+  const headerBottomMenuListAllLi = document.querySelectorAll('.header-bottom__menu-list li');
+  headerBottomMenuListAllLi.forEach(function (item) {
+    
+      const headerBottomMenuListAllLiAlla = item.querySelector('a');
+      // Автоматическое добавление стрелки при добавлении нового уровня в меню
+      ( item.querySelector('ul') ) ? headerBottomMenuListAllLiAlla.classList.add('header-bottom__menu-link--has-arrow') : headerBottomMenuListAllLiAlla.classList.remove('header-bottom__menu-link--has-arrow');
+      
+  });
+
+  const headerBottomMenuList = document.querySelector('.header-bottom__menu-list');
+  const headerBottomMenuListDirectLi = document.querySelectorAll('.header-bottom__menu-list > li');
+
+  // Автоматический отступ от правого края, если есть стрелка у последнего пункта
+  const lastLi = headerBottomMenuListDirectLi[headerBottomMenuListDirectLi.length - 1];
+  const lastA = lastLi.querySelector('a');
+
+  ( lastA.classList.contains('header-bottom__menu-link--has-arrow') ) ?  headerBottomMenuList.classList.add('header-bottom__menu-list--has-margin') : headerBottomMenuList.classList.remove('header-bottom__menu-list--has-margin');
+  // header-bottom menu END
+</script>
+<!-- Многоуровневое меню END -->

@@ -1,0 +1,11 @@
+/* ======= level START ======= */
+
+.level {
+    background-color: lighten($color: $temp, $amount: 20%);
+  }
+  
+.level__layout {
+    background-color: $temp;
+  }
+
+/* ======= level END ======= */

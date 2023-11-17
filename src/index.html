@@ -4,11 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site name</title>
+  <title>Ночевников – Ремонтная компания, которую рекомендуют друзьям</title>
 
-  <!-- Не забыть сгенерировать фавиконки на https://www.favicon-generator.org/ + manifest.json + browserconfig.xml -->
-  <link rel="icon" href="favicon.ico"> <!-- 16×16 -->
-  <!-- Не забыть сгенерировать фавиконки на https://www.favicon-generator.org/ + manifest.json + browserconfig.xml -->
+  <!-- Favicons START -->
+  <!-- <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="img/fav/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/fav/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/fav/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/fav/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/fav/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/fav/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/fav/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/fav/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="img/fav/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/fav/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png"> -->
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/fav/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Favicons END -->
 
   <!-- ======= CSS START ======= -->
   <link rel="stylesheet" href="css/vendor.min.css">
@@ -18,21 +35,46 @@
 
 <body>
   <!-- ======= HTML START ======= -->
-  <!-- @@include('./header.html') -->
 
-  <!-- <main class="main-page"> -->
-  <!-- @@include('./sections/name-section.html') -->
-  <!-- </main> -->
+  <!-- ======= before header START ======= -->
+  <!-- @@include('./pages/preloader.html')
+  @@include('./pages/canvi-mobile-navbar.html') -->
+  <!-- ======= before header END ======= -->
+  
+  <!-- <div class="canvi-content"> -->
+    
+    @@include('./pages/header.html')
 
-  <!-- <div class="first-page"> -->
-  <!-- @@include('./sections/name-section.html') -->
+    <!-- <main class="main"> -->
+      @@include('./pages/promo.html')
+      <!-- @@include('./pages/achievements.html') -->
+      <!-- @@include('./pages/services.html') -->
+      <!-- @@include('./pages/advantages.html') -->
+      <!-- @@include('./pages/portfolio.html') -->
+      <!-- @@include('./pages/download.html') -->
+      <!-- @@include('./pages/team.html') -->
+      <!-- @@include('./pages/audit.html') -->
+      <!-- @@include('./pages/before-after.html') -->
+      <!-- @@include('./pages/lifehacks.html') -->
+      <!-- @@include('./pages/reviews.html') -->
+      <!-- @@include('./pages/level.html') -->
+      <!-- @@include('./pages/read-more.html') -->
+      <!-- @@include('./pages/faq.html') -->
+      <!-- @@include('./pages/no-information.html') -->
+    <!-- </main> -->
+
+    <!-- @@include('./pages/footer.html') -->
+
   <!-- </div> -->
+  
+  <!-- ======= after footer START ======= -->
+  <!-- @@include('./pages/modal.html') -->
+  <!-- ======= after footer END ======= -->
 
-  <!-- @@include('./footer.html') -->
   <!-- ======= HTML END ======= -->
 
   <!-- ======= SVG sprites START ======= -->
-  <svg width="0" height="0" class="hidden">
+  <!-- <svg width="0" height="0" class="hidden">
     <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" id="pagination-arrow-icon">
       <path d="M12.8346 7.00033H1.16797M1.16797 7.00033L7.0013 12.8337M1.16797 7.00033L7.0013 1.16699"
         stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -52,13 +94,14 @@
         d="M15 13.75C17.7614 13.75 20 11.5114 20 8.75C20 5.98858 17.7614 3.75 15 3.75C12.2386 3.75 10 5.98858 10 8.75C10 11.5114 12.2386 13.75 15 13.75Z"
         stroke="#B50717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
     </symbol>
-  </svg>
+  </svg> -->
   <!-- ======= SVG sprites END ======= -->
-
+  
   <!-- ======= JS START ======= -->
   <script src="js/vendor.min.js"></script>
   <script src="js/main.min.js"></script>
   <!-- ======= JS END ======= -->
+  
 </body>
 
 </html>

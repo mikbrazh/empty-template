@@ -1,4 +1,7 @@
+// @use "sass:map"; // нужно для lite-custom-grid
+
 // Миксины Бутстрапа для _media.sass (порядок именно такой)
+@import "bootstrap-custom-grid";
 @import "../vendor/bootstrap-5.2.3/scss/functions";
 @import "../vendor/bootstrap-5.2.3/scss/variables";
 @import "../vendor/bootstrap-5.2.3/scss/mixins";
@@ -10,6 +13,10 @@
 /* ======= Шрифты START ======= */
 @import "fonts";
 /* ======= Шрифты END ======= */
+
+/* ======= Своя кастомная сетка START ======= */
+// @import "lite-custom-grid";
+/* ======= Своя кастомная сетка END ======= */
 
 /* ======= Сброс стилей START ======= */
 *,
@@ -68,16 +75,23 @@ footer,
 header,
 nav,
 section,
-video {
+video,
+dl,
+dt,
+dd {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  // font: inherit;
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   text-size-adjust: none;
+}
+
+img, video, canvas {
+  overflow: hidden;
 }
 
 a {
@@ -146,24 +160,26 @@ body {
   // justify-content: center;
   // height: 100vh;
 
-  font-family: $Roboto400;
+  min-width: 320px;
+  font-family: $Montserrat-500;
   font-size: 16px;
-  line-height: 1.65;
-  letter-spacing: 1.25px;
-  color: $vulcan;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--black);
+  background-color: var(--white);
 
   a {
-    color: $vulcan;
+    color: var(--black);
   }
 }
 
 ::placeholder {
-  color: $milk;
+  color: var(--grey);
 }
 
 ::selection {
-  color: $accent;
-  background-color: $vulcan;
+  color: var(--white);
+  background-color: var(--darkGrey);
 }
 
 .img-responsive {
@@ -177,14 +193,230 @@ body {
 }
 
 .is-hidden {
-  display: none
+  width: 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: rotateX(-90deg);
 }
 
+.is-static {
+  overflow: hidden;
+  // height: 100%; // Возвращает наверх сайта после модалки
+  -webkit-overflow-scrolling: touch;
+}
+
+.has-hyphens {
+  hyphens: auto;
+}
+
+// .input-default {
+//   width: 100%;
+//   min-height: 60px;
+//   padding: 16px 30px;
+//   font-size: 20px;
+//   border-radius: 100px;
+//   border: 1px solid $grey;
+//   background-color: $white;
+//   color: $black;
+//   line-height: 0;
+//   &::placeholder {
+//     color: $black;
+//     opacity: 0.5;
+//   }
+// }
+
+// .button-default {
+//   width: 100%;
+//   min-height: 60px;
+//   padding: 16px 38px;
+//   font-family: $InterTight-700;
+//   font-size: 16px;
+//   text-transform: uppercase;
+//   border-radius: 100px;
+//   background-color: $red;
+//   color: $white;
+//   transition: color $button;
+//   letter-spacing: 0;
+//   cursor: pointer;
+//   &:hover {
+//     background-color: $darkRed;
+//   }
+//   &:active {
+//     background-color: $purple;
+//   }
+// }
+
+// .agreement-link-default {
+//   color: $blue;
+//   transition: $button;
+//   &:hover {
+//     color: $blue;
+//     border-bottom: 1px solid $blue;
+//   }
+//   &:active {
+//     color: $purple;
+//   }
+// }
+
+/* ======= button-default START ======= */
+.button-default {
+  position: relative;
+  display: inline-block;
+  color: var(--black, var(--black, #272D2F));
+  font-family: $Montserrat-500;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 14px 30px;
+  border-radius: 5px;
+  background-color: var(--orange, #F4B346);
+  cursor: pointer;
+  overflow: hidden;
+  transition: color $button, background-color $button;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150px;
+    height: 100%;
+    width: 50px;
+    transform: skewX(45deg); // Наклон
+    animation: flareAnimation;
+    background: linear-gradient(74deg, rgba(247, 220, 175, 0.01), rgba(247, 220, 175, 0.7), rgba(247, 220, 175, 0.01));
+    animation: flareAnimation 2s infinite linear; // Время и тип анимации можно менять
+  }
+
+  &:hover {
+    background-color: var(--white, #FFF);
+  }
+
+  &:hover:before {
+    animation: none;
+  }
+}
+
+@keyframes flareAnimation {
+  0% {
+    left: -150%;
+  }
+
+  100% {
+    left: 150%;
+  }
+}
+
+.button-default--hover-black:hover {
+  color: var(--white);
+  background-color: var(--black);
+}
+/* ======= button-default END ======= */
+/* ======= slider-arrow-default START ======= */
+.slider-arrow-left-default {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: var(--orange);
+  cursor: pointer;
+  transition: $button;
+
+  &:hover {
+    background-image: linear-gradient(75deg, #F4B346 40%, #F7DCAF 80%, #F4B346);
+  }
+  
+  &:active {
+    background-image: none;
+    background-color: var(--black);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 15px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzEiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAzMSAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAuNzY1NTQ5IDcuMjk3NzhDMC4zNzUwMjUgNy42ODgzIDAuMzc1MDI1IDguMzIxNDYgMC43NjU1NDkgOC43MTE5OUw3LjEyOTUxIDE1LjA3NTlDNy41MjAwMyAxNS40NjY1IDguMTUzMiAxNS40NjY1IDguNTQzNzIgMTUuMDc1OUM4LjkzNDI1IDE0LjY4NTQgOC45MzQyNSAxNC4wNTIzIDguNTQzNzIgMTMuNjYxN0wyLjg4Njg3IDguMDA0ODhMOC41NDM3MiAyLjM0ODAzQzguOTM0MjUgMS45NTc1IDguOTM0MjUgMS4zMjQzNCA4LjU0MzcyIDAuOTMzODE0QzguMTUzMiAwLjU0MzI5IDcuNTIwMDQgMC41NDMyOSA3LjEyOTUxIDAuOTMzODE0TDAuNzY1NTQ5IDcuMjk3NzhaTTMxLjAwMzkgNy4wMDQ4OEwxLjQ3MjY2IDcuMDA0ODhMMS40NzI2NiA5LjAwNDg4TDMxLjAwMzkgOS4wMDQ4OEwzMS4wMDM5IDcuMDA0ODhaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+.slider-arrow-right-default {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: var(--orange);
+  cursor: pointer;
+  transition: $button;
+
+  &:hover {
+    background-image: linear-gradient(75deg, #F4B346 40%, #F7DCAF 80%, #F4B346);
+  }
+
+  &:active {
+    background-image: none;
+    background-color: var(--black);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 15px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAzMCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI5LjcwNzEgOC43MTAwNEMzMC4wOTc2IDguMzE5NTIgMzAuMDk3NiA3LjY4NjM1IDI5LjcwNzEgNy4yOTU4M0wyMy4zNDMxIDAuOTMxODY1QzIyLjk1MjYgMC41NDEzNCAyMi4zMTk1IDAuNTQxMzQgMjEuOTI4OSAwLjkzMTg2NUMyMS41Mzg0IDEuMzIyMzkgMjEuNTM4NCAxLjk1NTU1IDIxLjkyODkgMi4zNDYwOEwyNy41ODU4IDguMDAyOTNMMjEuOTI4OSAxMy42NTk4QzIxLjUzODQgMTQuMDUwMyAyMS41Mzg0IDE0LjY4MzUgMjEuOTI4OSAxNS4wNzRDMjIuMzE5NSAxNS40NjQ1IDIyLjk1MjYgMTUuNDY0NSAyMy4zNDMxIDE1LjA3NEwyOS43MDcxIDguNzEwMDRaTS0xLjMxMTM0ZS0wNyA5LjAwMjkzTDI5IDkuMDAyOTNMMjkgNy4wMDI5M0wxLjMxMTM0ZS0wNyA3LjAwMjkzTC0xLjMxMTM0ZS0wNyA5LjAwMjkzWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+/* ======= slider-arrow-default END ======= */
+@include media-breakpoint-down(xxl) {
+  .container {
+    padding: 0;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .container {
+      padding-right: calc(var(--bs-gutter-x) * 0.5);
+      padding-left: calc(var(--bs-gutter-x) * 0.5);
+      margin-top: var(--bs-gutter-y);
+  }
+}
 /* ======= Общий CSS END ======= */
 
 /* ======= Кастомный CSS START ======= */
-// @import "_parts/_header";
-// @import "_parts/_sections/_name-section";
+@import "_pages/_header";
+@import "_pages/_promo";
+// @import "_pages/_achievements";
+// @import "_pages/_services";
+// @import "_pages/_portfolio";
+// @import "_pages/_download";
+// @import "_pages/_footer";
+// @import "_pages/_faq";
+// @import "_pages/_no-information";
+// @import "_pages/_our-team";
+// @import "_pages/_lifehacks";
+// @import "_pages/_before-after";
+// @import "_pages/_audit";
+// @import "_pages/_advantages";
+// @import "_pages/_read-more";
+// @import "_pages/_level";
+// @import "_pages/_reviews";
+
+// @import "_parts/_modal";
+// @import "_parts/_preloader";
+// @import "_parts/_canvi-mobile-navbar";
 
 // Общие Media
 // @import "media"; // Всегда в конце

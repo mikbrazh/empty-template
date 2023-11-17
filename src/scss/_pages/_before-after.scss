@@ -1,0 +1,9 @@
+/* ======= before-afterSTART ======= */
+.before-after {
+  background-color: lighten($color: $temp, $amount: 20%);
+}
+
+.before-after__layout {
+  background-color: $temp;
+}
+/* ======= before-afterEND ======= */

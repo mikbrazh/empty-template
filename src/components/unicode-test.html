@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+		}
+
+		.unicode, .html {
+			position: relative;
+			display: block;
+			font-size: 24px;
+		}
+
+		.unicode:before {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			position: absolute;
+			top: 50%;
+			left: -50px;
+			transform: translateY(-50%);
+
+			content: "\0E5B";
+
+			width: 40px;
+			height: 40px;
+			background-color: pink;
+		}
+
+		.html span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			position: absolute;
+			top: 50%;
+			left: -50px;
+			transform: translateY(-50%);
+
+			width: 40px;
+			height: 40px;
+			background-color: lightblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<p class="unicode">– Юникод</p>
+		<p class="html"><span>&#3675;</span> – HTML</p>
+		<p class="html"><span>☝</span> – HTML Вариант 1</p>
+		<p class="html"><span>&#9757;</span> – HTML Вариант 2</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+/* ======= lifehacks START ======= */
+.lifehacks {
+  background-color: lighten($color: $temp, $amount: 20%);
+}
+
+.lifehacks__layout {
+  background-color: $temp;
+}
+/* ======= lifehacks END ======= */

@@ -1,0 +1,148 @@
+/* ======= lite custom grid START ======= */
+$grid-breakpoints:     (xs: 0, sm: 480px, md: 640px, lg: 960px, xl: 1280px, xxl: 1366px);
+$container-max-widths: (sm: 460px, md: 620px, lg: 940px, xl: 1160px, xxl: 1320px); 
+
+.container {
+   --bs-gutter-x: 1.5rem;
+   --bs-gutter-y: 0;
+   width: 100%;
+   padding-right: calc(var(--bs-gutter-x) * 0.5);
+   padding-left: calc(var(--bs-gutter-x) * 0.5);
+   margin-right: auto;
+   margin-left: auto;
+ }
+
+ @media (min-width: map.get($grid-breakpoints, "sm")) {
+   .container {
+     max-width: map.get($container-max-widths, "sm");
+   }
+ }
+
+ @media (min-width: map.get($grid-breakpoints, "md")) {
+   .container {
+     max-width: map.get($container-max-widths, "md");
+   }
+ }
+
+ @media (min-width: map.get($grid-breakpoints, "lg")) {
+  .container {
+     max-width: map.get($container-max-widths, "lg");
+   }
+ }
+
+ @media (min-width: map.get($grid-breakpoints, "xl")) {
+   .container {
+     max-width: map.get($container-max-widths, "xl");
+   }
+ }
+
+ @media (min-width: map.get($grid-breakpoints, "xxl")) {
+  .container {
+     max-width: map.get($container-max-widths, "xxl");
+   }
+ }
+
+ .d-inline {
+   display: inline !important;
+ }
+ 
+ .d-inline-block {
+   display: inline-block !important;
+ }
+ .d-block {
+   display: block !important;
+ }
+ .d-none {
+   display: none !important;
+ }
+ 
+ @media (min-width: map.get($grid-breakpoints, "sm")) {
+   .d-sm-inline {
+     display: inline !important;
+   }
+   .d-sm-inline-block {
+     display: inline-block !important;
+   }
+   .d-sm-block {
+     display: block !important;
+   }
+   .d-sm-none {
+     display: none !important;
+   }
+ }
+
+ @media (min-width: map.get($grid-breakpoints, "md")) {
+   .d-md-inline {
+     display: inline !important;
+   }
+   .d-md-inline-block {
+     display: inline-block !important;
+   }
+   .d-md-block {
+     display: block !important;
+   }
+   .d-md-none {
+     display: none !important;
+   }
+ }
+
+ @media (min-width: map.get($grid-breakpoints, "lg")) {
+   .d-lg-inline {
+     display: inline !important;
+   }
+   .d-lg-inline-block {
+     display: inline-block !important;
+   }
+   .d-lg-block {
+     display: block !important;
+   }
+   .d-lg-none {
+     display: none !important;
+   }
+ }
+
+ @media (min-width: map.get($grid-breakpoints, "xl")) {
+   .d-xl-inline {
+     display: inline !important;
+   }
+   .d-xl-inline-block {
+     display: inline-block !important;
+   }
+   .d-xl-block {
+     display: block !important;
+   }
+   .d-xl-none {
+     display: none !important;
+   }
+ }
+
+ @media (min-width: map.get($grid-breakpoints, "xxl")) {
+   .d-xxl-inline {
+     display: inline !important;
+   }
+   .d-xxl-inline-block {
+     display: inline-block !important;
+   }
+   .d-xxl-block {
+     display: block !important;
+   }
+   .d-xxl-none {
+     display: none !important;
+   }
+ }
+
+ @media print {
+   .d-print-inline {
+     display: inline !important;
+   }
+   .d-print-inline-block {
+     display: inline-block !important;
+   }
+   .d-print-block {
+     display: block !important;
+   }
+   .d-print-none {
+     display: none !important;
+   }
+ }
+/* ======= lite custom grid END ======= */

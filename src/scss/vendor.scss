@@ -1,9 +1,13 @@
 /* ======= Bootstrap grid START ======= */
 // Импортирование Бутстрап сетки (порядок именно такой)
 // @import "../vendor/bootstrap-5.2.3/scss/functions";
-// @import "bootstrap-custom-grid"; // Кастомные брейкпойнты (Импортировать тут)
 // @import "../vendor/bootstrap-5.2.3/scss/variables";
 // @import "../vendor/bootstrap-5.2.3/scss/mixins";
 // @import "../vendor/bootstrap-5.2.3/scss/reboot";
-// @import "../vendor/bootstrap-5.2.3/scss/bootstrap-grid";
+@import "bootstrap-custom-grid"; // Кастомные брейкпойнты (Импортировать тут)
+@import "../vendor/bootstrap-5.2.3/scss/bootstrap-grid";
 /* ======= Bootstrap grid END ======= */
+
+/* ======= Canvi mobile navbar START ======= */
+// @import "../vendor/canvi-master/scss/canvi";
+/* ======= Canvi mobile navbar END ======= */

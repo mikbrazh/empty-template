@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		ul, li {
+			margin: 0;
+		  padding: 0;
+		  border: 0;
+		  font-size: 100%;
+		  vertical-align: baseline;
+		  text-rendering: optimizeLegibility;
+		  -webkit-font-smoothing: antialiased;
+		  text-size-adjust: none;
+		  text-decoration: none;
+		  list-style: none
+		}
+
+		.grid {
+			display: grid;
+		  gap: 30px 30px;
+		  grid-template-areas:
+		    "sm sm sm lg"
+		    "sm sm sm lg";
+		}
+
+		.grid li {
+			height: 280px;
+			background-color: grey;
+		}
+
+
+		.grid li:nth-child(7) {
+			height: 100%;
+			grid-area: lg;
+			background-color: tomato;
+		}
+
+	</style>
+
+</head>
+<body>
+
+<ul class="grid">
+	<li>Далеко-далеко за словесными горами, в стране.</li>
+	<li>Далеко-далеко за словесными горами, в стране.</li>
+	<li>Далеко-далеко за словесными горами, в стране.</li>
+	<li>Далеко-далеко за словесными горами, в стране.</li>
+	<li>Далеко-далеко за словесными горами, в стране.</li>
+	<li>Далеко-далеко за словесными горами, в стране.</li>
+	<li>Далеко-далеко за словесными горами, в стране.</li>
+	<li>Далеко-далеко за словесными горами, в стране.</li>
+	<li>Далеко-далеко за словесными горами, в стране.</li>
+</ul>
+
+</body>
+</html>

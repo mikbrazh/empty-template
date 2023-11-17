@@ -1,9 +1,20 @@
 @import "_mixins/font-face"; // !!! Проверить подключение всех форматов в _mixins/font-face.sass
 
-@include font-face("Roboto-400",  "../fonts/Roboto/Roboto-Regular",          400);
-@include font-face("Roboto-700",  "../fonts/Roboto/Roboto-Bold",             700);
-@include font-face("Raleway-400", "../fonts/Raleway/static/Raleway-Regular", 400);
-@include font-face("Raleway-700", "../fonts/Raleway/static/Raleway-Bold",    700);
+@include font-face("Montserrat-300", "../fonts/Montserrat/static/Montserrat-Light", 300);
+@include font-face("Montserrat-400", "../fonts/Montserrat/static/Montserrat-Regular", 400);
+@include font-face("Montserrat-500", "../fonts/Montserrat/static/Montserrat-Medium", 500);
+@include font-face("Montserrat-600", "../fonts/Montserrat/static/Montserrat-SemiBold", 600);
+@include font-face("Montserrat-700", "../fonts/Montserrat/static/Montserrat-Bold", 700);
+@include font-face("Montserrat-800", "../fonts/Montserrat/static/Montserrat-ExtraBold", 800);
+@include font-face("Montserrat-900", "../fonts/Montserrat/static/Montserrat-Black", 900);
+
+@include font-face("Inter-300", "../fonts/Inter/static/Inter-Light", 300);
+@include font-face("Inter-500", "../fonts/Inter/static/Inter-Medium", 500);
+@include font-face("Inter-600", "../fonts/Inter/static/Inter-SemiBold", 600);
+@include font-face("Inter-700", "../fonts/Inter/static/Inter-Bold", 700);
+@include font-face("Inter-800", "../fonts/Inter/static/Inter-ExtraBold", 800);
+
+@include font-face("MuseoModerno-400", "../fonts/MuseoModerno/static/MuseoModerno-Regular", 400);
 
 // Подсказка:
 // 100 Тонкий (Волосяной) Thin (Hairline)

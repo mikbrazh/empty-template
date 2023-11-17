@@ -2,21 +2,55 @@
 $default-browser-font-size: 16px;
 
 // Цвета
-$accent:                    #FF1616;
-$vulcan:                    #051326;
-$milk:                      #F7F7F8;
-$grey:                      #CACAD0;
-$lightGrey:                 #EEEFF0;
-$darkGrey:                  #8A8A99;
+:root {
+    --white:                                 #FFFFFF;
+    --white30percent:                lighten(#FFFFFF, 30%);
+    --black:                                 #272D2F;
+    --orange:                                #F4B346;
+    --orange80percent:               lighten(#F4B346, 80%);
+    --gradientOrange: linear-gradient(74deg, #F4B346 49.21%, #F7DCAF 80.3%, #F4B346 95.84%);
+    --grey:                                  #E2E2E2;
+    --lightGrey:                             #F7F7F7;
+    --darkGrey:                              #979797;
+    --blue:                                  #0077FF;
+    --red:                                   #ED484A;
+    --green:                                 #25D366;
 
-$temp:                      #C0C0C0; // Служебный фон
+    --temp:                                  #C0C0C0; // Служебный фон
+}
+
+// $white:                                 #FFFFFF;
+// $white30percent:                lighten(#FFFFFF, 30%);
+// $black:                                 #272D2F;
+// $orange:                                #F4B346;
+// $orange80percent:               lighten(#F4B346, 80%);
+// $gradientOrange: linear-gradient(74deg, #F4B346 49.21%, #F7DCAF 80.3%, #F4B346 95.84%);
+// $grey:                                  #E2E2E2;
+// $lightGrey:                             #F7F7F7;
+// $darkGrey:                              #979797;
+// $blue:                                  #0077FF;
+// $red:                                   #ED484A;
+// $green:                                 #25D366;
+
+// $temp:                                  #C0C0C0; // Служебный фон
 
 // Шрифты
-$Roboto400:                "Roboto-400", Arial, sans-serif;
-$Roboto700:                "Roboto-700", Arial, sans-serif;
-$Raleway400:               "Raleway-400", Arial, sans-serif;
-$Raleway700:               "Raleway-700", Arial, sans-serif;
+$Montserrat-300:                        "Montserrat-300", Arial, sans-serif;
+$Montserrat-400:                        "Montserrat-400", Arial, sans-serif;
+$Montserrat-500:                        "Montserrat-500", Arial, sans-serif;
+$Montserrat-600:                        "Montserrat-600", Arial, sans-serif;
+$Montserrat-700:                        "Montserrat-700", Arial, sans-serif;
+$Montserrat-800:                        "Montserrat-800", Arial, sans-serif;
+
+$Inter-300:                             "Inter-300", Arial, sans-serif;
+$Inter-500:                             "Inter-500", Arial, sans-serif;
+$Inter-600:                             "Inter-600", Arial, sans-serif;
+$Inter-700:                             "Inter-700", Arial, sans-serif;
+$Inter-800:                             "Inter-800", Arial, sans-serif;
+
+$MuseoModerno-400:                      "MuseoModerno-400", Arial, sans-serif;
 
 // Переходы анимации
-$buttons:                   0.1s ease;
-$navButtons:                0.2s ease;
+$button:                                0.1s ease;
+$navButton:                             0.2s ease;
+$subnav:                                0.3s ease;

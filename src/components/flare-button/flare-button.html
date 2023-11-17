@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		.promo__details-link {
+  position: relative;
+  display: inline-block;
+  color: var(--black, var(--black, #272D2F));
+  font-family: $Montserrat-500;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 14px 30px;
+  border-radius: 5px;
+  background-color: var(--orange, #F4B346);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color $navButton;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150px;
+    height: 100%;
+    width: 50px;
+    transform: skewX(45deg); // Наклон
+    animation: flareAnimation;
+    background: linear-gradient(74deg, rgba(247, 220, 175, 0.01), rgba(247, 220, 175, 0.7), rgba(247, 220, 175, 0.01));
+    animation: flareAnimation 2s infinite linear; // Время и тип анимации можно менять
+  }
+
+  &:hover {
+    background-color: var(--white, #FFF);
+  }
+
+  &:hover:before {
+    animation: none;
+  }
+}
+
+@keyframes flareAnimation {
+  0% {
+    left: -150%;
+  }
+
+  100% {
+    left: 150%;
+  }
+}
+	</style>
+</head>
+<body>
+
+	<a href="#" class="promo__details-link">Подробнее</a>
+
+</body>
+</html>
